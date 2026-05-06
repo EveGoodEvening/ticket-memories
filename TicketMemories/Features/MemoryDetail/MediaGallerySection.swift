@@ -1,6 +1,7 @@
 import SwiftUI
 import SwiftData
 import PhotosUI
+import UniformTypeIdentifiers
 
 struct MediaGallerySection: View {
     @Environment(\.modelContext) private var modelContext
@@ -111,8 +112,29 @@ struct MediaGallerySection: View {
 
         Task {
             for item in items {
-                if let data = try? await item.loadTransferable(type: Data.self) {
-                    let filename = item.itemIdentifier ?? UUID().uuidString
+                let isVideo = item.supportedContentTypes.contains(where: { $0.conforms(to: .movie) })
+                guard let data = try? await item.loadTransferable(type: Data.self) else { continue }
+                let filename = item.itemIdentifier ?? UUID().uuidString
+
+                if isVideo {
+                    if let result = try? MediaStorageService.importVideo(
+                        data: data,
+                        originalFilename: filename
+                    ) {
+                        let asset = MediaAsset(
+                            event: event,
+                            type: .video,
+                            localFilePath: result.filePath,
+                            thumbnailPath: result.thumbnailPath,
+                            originalFilename: filename,
+                            duration: result.duration
+                        )
+                        modelContext.insert(asset)
+                        if event.coverMediaId == nil {
+                            event.coverMediaId = asset.id
+                        }
+                    }
+                } else {
                     if let result = try? MediaStorageService.importImage(
                         data: data,
                         originalFilename: filename
@@ -127,7 +149,6 @@ struct MediaGallerySection: View {
                             height: result.height
                         )
                         modelContext.insert(asset)
-
                         if event.coverMediaId == nil {
                             event.coverMediaId = asset.id
                         }

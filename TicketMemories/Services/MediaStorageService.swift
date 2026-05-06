@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import AVFoundation
 import SwiftData
 
 struct MediaStorageService {
@@ -74,6 +75,60 @@ struct MediaStorageService {
         }
 
         return nil
+    }
+
+    static func importVideo(data: Data, originalFilename: String?) throws -> (filePath: String, thumbnailPath: String?, duration: Double?) {
+        try ensureDirectoriesExist()
+
+        let fileId = UUID().uuidString
+        let ext = (originalFilename as NSString?)?.pathExtension.isEmpty == false
+            ? (originalFilename! as NSString).pathExtension
+            : "mov"
+        let filename = "\(fileId).\(ext)"
+
+        let destinationURL = mediaDirectory.appending(path: filename)
+        try data.write(to: destinationURL)
+
+        let thumbnailPath = generateVideoThumbnail(from: destinationURL, fileId: fileId)
+        let duration = videoDuration(from: destinationURL)
+
+        return (filename, thumbnailPath, duration)
+    }
+
+    static func generateVideoThumbnail(from url: URL, fileId: String) -> String? {
+        let asset = AVAsset(url: url)
+        let generator = AVAssetImageGenerator(asset: asset)
+        generator.appliesPreferredTrackTransform = true
+        generator.maximumSize = CGSize(width: thumbnailMaxSize * 2, height: thumbnailMaxSize * 2)
+
+        let cgImage: CGImage
+        do {
+            let time = CMTime(seconds: 1, preferredTimescale: 600)
+            cgImage = try generator.copyCGImage(at: time, actualTime: nil)
+        } catch {
+            do {
+                cgImage = try generator.copyCGImage(at: .zero, actualTime: nil)
+            } catch {
+                return nil
+            }
+        }
+
+        let thumbnailImage = UIImage(cgImage: cgImage)
+        let thumbnailFilename = "\(fileId)_thumb.jpg"
+        let thumbnailURL = thumbnailDirectory.appending(path: thumbnailFilename)
+        if let jpegData = thumbnailImage.jpegData(compressionQuality: 0.7) {
+            try jpegData.write(to: thumbnailURL)
+            return thumbnailFilename
+        }
+
+        return nil
+    }
+
+    private static func videoDuration(from url: URL) -> Double? {
+        let asset = AVAsset(url: url)
+        let duration = asset.duration
+        guard duration.timescale > 0 else { return nil }
+        return CMTimeGetSeconds(duration)
     }
 
     static func deleteMedia(filePath: String, thumbnailPath: String?) {

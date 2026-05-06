@@ -39,10 +39,10 @@ These items are actively broken — the UI promises something that doesn't work.
 Checklist:
 
 - [x] Revert `init.todo.md` line 921 to `[ ]`
-- [ ] In `MediaGallerySection.swift`, detect video vs. image from `PhotosPickerItem` content type
-- [ ] Add `MediaStorageService.importVideo(data:eventId:)` that saves raw video data (no JPEG conversion)
-- [ ] Set `type: .video` on `MediaAsset` for video imports
-- [ ] Generate video thumbnail via `AVAssetImageGenerator` (fixes review item #8 simultaneously)
+- [x] In `MediaGallerySection.swift`, detect video vs. image from `PhotosPickerItem` content type
+- [x] Add `MediaStorageService.importVideo(data:eventId:)` that saves raw video data (no JPEG conversion)
+- [x] Set `type: .video` on `MediaAsset` for video imports
+- [x] Generate video thumbnail via `AVAssetImageGenerator` (fixes review item #8 simultaneously)
 - [ ] Test: select a video from PhotosPicker → verify it saves as video, plays back, has thumbnail
 - [ ] Mark `[x]` only after verified
 
@@ -55,9 +55,9 @@ Checklist:
 Checklist:
 
 - [x] Revert `init.todo.md` line 887 to `[ ]`
-- [ ] Add `generateVideoThumbnail(from url: URL) -> UIImage?` to `MediaStorageService`
-- [ ] Use `AVAssetImageGenerator` to extract first frame or frame at 1s
-- [ ] Call this during video import to populate `thumbnailPath`
+- [x] Add `generateVideoThumbnail(from url: URL) -> UIImage?` to `MediaStorageService`
+- [x] Use `AVAssetImageGenerator` to extract first frame or frame at 1s
+- [x] Call this during video import to populate `thumbnailPath`
 - [ ] Mark `[x]` only after verified
 
 ---
