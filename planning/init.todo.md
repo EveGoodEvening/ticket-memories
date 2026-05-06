@@ -348,7 +348,7 @@ Acceptance criteria:
 
 - [x] Support Dynamic Type at least for core screens.
 - [x] Ensure tappable targets are large enough.
-- [ ] Ensure timeline cards have accessible labels.
+- [x] Ensure timeline cards have accessible labels.
 - [ ] Ensure map markers have useful accessibility labels.
 - [ ] Ensure recap export does not depend only on color.
 - [ ] Verify text contrast.
@@ -814,7 +814,7 @@ Acceptance criteria:
 
 - [x] Query memories sorted by date descending.
 - [x] Group memories by year.
-- [ ] Group memories by month.
+- [x] Group memories by month.
 - [x] Handle unknown-date memories.
 - [x] Decide placement for unknown-date memories. → Grouped under "Unknown Date" at the end.
 - [ ] Support filtering by category later if needed.
@@ -823,7 +823,7 @@ Acceptance criteria:
 
 - [x] Build timeline screen.
 - [x] Build year section header.
-- [ ] Build month section header.
+- [x] Build month section header.
 - [x] Build large event card.
 - [ ] Build compact fallback card.
 - [ ] Show cover photo if present.
