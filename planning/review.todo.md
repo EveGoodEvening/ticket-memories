@@ -70,28 +70,28 @@ These items have toggle UI that controls nothing. Users see options that are lie
 
 - **Review item #15** — `init.todo.md` line 1168: `[x] Include/exclude photos`
 - **Problem:** `PDFExportOptions.includePhotos` exists; toggle shown in UI. But `PDFExportService.renderEventPage` never checks `options.includePhotos` and never renders photos.
-- **Disposition:** Unmark + either implement photo rendering in PDF, or remove the toggle
+- **Disposition:** Unmark + Implement (decision: implement rendering)
 
 Checklist:
 
 - [ ] Revert `init.todo.md` line 1168 to `[ ]`
-- [ ] Decision: implement photo grid in PDF event pages, OR remove toggle from `ExportView`
-- [ ] If implementing: read event's `MediaAsset` images, render a grid in `renderEventPage` gated by `options.includePhotos`
-- [ ] If deferring: remove the `includePhotos` toggle from `ExportView.swift` `printOptionsSheet`
+- [ ] In `PDFExportService.renderEventPage`, check `options.includePhotos`
+- [ ] Read event's `MediaAsset` images from disk, render a photo grid below notes section
+- [ ] Handle missing image files gracefully (skip, don't crash)
 - [ ] Mark `[x]` only after the toggle controls real behavior
 
 ### 2.2 PDF "Include/exclude map" toggle does nothing
 
 - **Review item #16** — `init.todo.md` line 1170: `[x] Include/exclude map`
 - **Problem:** Same pattern — toggle exists, `PDFExportService` never renders a map page.
-- **Disposition:** Unmark + either implement map page in PDF, or remove the toggle
+- **Disposition:** Unmark + Implement (decision: implement rendering)
 
 Checklist:
 
 - [ ] Revert `init.todo.md` line 1170 to `[ ]`
-- [ ] Decision: implement map snapshot page in PDF gated by `options.includeMap`, OR remove toggle
-- [ ] If implementing: use `MKMapSnapshotter` to render a static map image for the PDF
-- [ ] If deferring: remove the `includeMap` toggle from `ExportView.swift` `printOptionsSheet`
+- [ ] In `PDFExportService`, add a `renderMapPage` method
+- [ ] Use `MKMapSnapshotter` to render a static map image with event pins
+- [ ] Gate the map page on `options.includeMap` and at least one event having coordinates
 - [ ] Mark `[x]` only after the toggle controls real behavior
 
 ### 2.3 PDF "Include/exclude Spotify link" toggle does nothing
@@ -100,29 +100,30 @@ Checklist:
   - Line 1171: `[x] Include/exclude Spotify link/QR placeholder`
   - Line 1258: `[x] Let user exclude Spotify link`
 - **Problem:** Toggle exists, PDF renderer never renders any Spotify content. The exclusion toggle is vacuously true.
-- **Disposition:** Unmark + either implement Spotify link rendering in PDF, or remove the toggle
+- **Disposition:** Unmark + Implement (decision: implement rendering)
 
 Checklist:
 
 - [ ] Revert `init.todo.md` line 1171 to `[ ]`
 - [ ] Revert `init.todo.md` line 1258 to `[ ]`
-- [ ] Decision: implement Spotify URL/QR rendering in `renderEventPage` gated by `options.includeSpotifyLink`, OR remove toggle
-- [ ] If implementing: render Spotify URL text (or QR code via `CIFilter`) on event pages where `SpotifyPlaylistLink` exists
-- [ ] If deferring: remove the `includeSpotifyLink` toggle from `ExportView.swift` `printOptionsSheet`
-- [ ] Also revert `init.todo.md` line 735 (`[ ] Add optional Spotify link/QR placeholder`) — this is already `[ ]`, keep it
+- [ ] In `PDFExportService.renderEventPage`, check `options.includeSpotifyLink`
+- [ ] When event has a `SpotifyPlaylistLink`, render the URL text on the event page
+- [ ] Optionally generate a QR code via `CIFilter("CIQRCodeGenerator")` for the Spotify URL
+- [ ] Gate rendering on `options.includeSpotifyLink` so the toggle actually works
+- [ ] Also mark `init.todo.md` line 735 (`[ ] Add optional Spotify link/QR placeholder`) as covered by this work
 - [ ] Mark `[x]` only after the toggle controls real behavior
 
 ### 2.4 PDF "Select year" not in options sheet
 
 - **Review item #18** — `init.todo.md` line 1164: `[x] Select year`
 - **Problem:** The `printOptionsSheet` in `ExportView` has no year picker. Year comes implicitly from RecapView.
-- **Disposition:** Unmark + Defer (year selection from RecapView context is acceptable UX for MVP)
+- **Disposition:** Unmark + Defer (decision: accept RecapView context, add read-only year display at most)
 
 Checklist:
 
 - [ ] Revert `init.todo.md` line 1164 to `[ ]`
-- [ ] Add comment in `ExportView.swift` near `printOptionsSheet`: year is inherited from recap context
-- [ ] Optionally add a year display (read-only) to the options sheet so user confirms which year they're exporting
+- [ ] Add a read-only year label to `printOptionsSheet` so user sees which year they're exporting
+- [ ] No year picker needed — year is inherited from RecapView context
 
 ---
 
@@ -371,15 +372,14 @@ Files to modify:
 
 Estimated scope: ~50-80 lines of new code
 
-### Batch 3: P1 — Remove dead toggles OR implement PDF rendering
+### Batch 3: P1 — Implement PDF rendering + import hardening
 
 Files to modify:
-- `TicketMemories/Features/Export/ExportView.swift` (remove toggles or keep)
-- `TicketMemories/Services/PDFExportService.swift` (add photo/map/Spotify rendering)
+- `TicketMemories/Services/PDFExportService.swift` (add photo grid, map page, Spotify link/QR rendering)
 - `TicketMemories/Features/Import/ImportPassView.swift` (add disclaimer, expired pass note, visual fallback)
 - `TicketMemories/Services/PassImportService.swift` (add expiration check, icon fallback)
 
-Decision needed: implement the PDF features or strip the toggles? Implementing is ~200 lines. Stripping is ~20 lines.
+Decision resolved: implement the PDF features (~200 lines). Toggles stay and get wired to real rendering.
 
 ### Batch 4: P2 — Accessibility + location confidence
 
@@ -397,13 +397,11 @@ Estimated scope: ~30-40 lines changed (font replacements + confidence assignment
 
 ---
 
-## 9. Decision Points Before Implementing
+## 9. Decision Points (Resolved)
 
-Before starting Batch 3, the following decisions are needed:
-
-- [ ] **PDF photos/map/Spotify**: Implement rendering in PDF, or strip the dead toggles for now?
-  - Recommend: strip toggles now, implement rendering as part of Section 16 (Print-ready PDF) polish
-- [ ] **Location search**: Build `MKLocalSearch` now, or defer?
-  - Recommend: defer to post-Batch 4, it's a larger feature
-- [ ] **Year picker in PDF options**: Add a year picker to the options sheet, or accept RecapView context?
-  - Recommend: accept RecapView context, add read-only year display at most
+- [x] **PDF photos/map/Spotify**: Implement rendering in PDF, or strip the dead toggles for now?
+  - **Decision: Implement rendering in PDF.** The toggles stay; wire them up to real rendering in `PDFExportService`.
+- [x] **Location search**: Build `MKLocalSearch` now, or defer?
+  - **Decision: Defer.** Location search is a larger feature; defer to post-Batch 4.
+- [x] **Year picker in PDF options**: Add a year picker to the options sheet, or accept RecapView context?
+  - **Decision: Accept RecapView context.** Add a read-only year display to the options sheet at most.
