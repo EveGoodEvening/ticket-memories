@@ -20,7 +20,7 @@ build/
 # Swift Package Manager
 .build/
 Packages/
-Package.resolved
+# Package.resolved
 
 # macOS
 .DS_Store
