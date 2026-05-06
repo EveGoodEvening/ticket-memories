@@ -1225,38 +1225,38 @@ Acceptance criteria:
 
 ### 17.1 Copy and Expectations
 
-- [ ] Write privacy copy for onboarding.
-- [ ] Write import disclaimer.
+- [x] Write privacy copy for onboarding.
+- [x] Write import disclaimer.
 - [ ] Write export disclaimer if exact location appears.
-- [ ] Write Settings privacy explanation.
-- [ ] Avoid “backup Wallet” language.
-- [ ] Avoid “scan all Wallet passes” language.
-- [ ] Use “import passes/files you choose” language.
+- [x] Write Settings privacy explanation.
+- [x] Avoid “backup Wallet” language.
+- [x] Avoid “scan all Wallet passes” language.
+- [x] Use “import passes/files you choose” language.
 
 ### 17.2 Data Minimization
 
-- [ ] Store only memory data user needs.
-- [ ] Avoid raw barcode storage.
-- [ ] Avoid pass auth token storage.
-- [ ] Hash pass identifiers for duplicate detection.
-- [ ] Keep media local in MVP.
-- [ ] Avoid analytics until privacy review.
+- [x] Store only memory data user needs.
+- [x] Avoid raw barcode storage.
+- [x] Avoid pass auth token storage.
+- [x] Hash pass identifiers for duplicate detection.
+- [x] Keep media local in MVP.
+- [x] Avoid analytics until privacy review.
 
 ### 17.3 Permissions
 
-- [ ] Photos permission only when adding media.
-- [ ] Files access only through user-selected import/export.
-- [ ] No current location permission for map display.
-- [ ] No Spotify OAuth in MVP.
-- [ ] No iCloud entitlement in local MVP.
+- [x] Photos permission only when adding media.
+- [x] Files access only through user-selected import/export.
+- [x] No current location permission for map display.
+- [x] No Spotify OAuth in MVP.
+- [x] No iCloud entitlement in local MVP.
 
 ### 17.4 Export Privacy
 
 - [ ] Preview export before sharing if feasible.
 - [ ] Let user remove exact location from export if map/location included.
-- [ ] Let user exclude notes from PDF.
-- [ ] Let user exclude Spotify link.
-- [ ] Clearly show exports are local files shared by user action.
+- [x] Let user exclude notes from PDF.
+- [x] Let user exclude Spotify link.
+- [x] Clearly show exports are local files shared by user action.
 
 ---
 
@@ -1264,11 +1264,11 @@ Acceptance criteria:
 
 MVP settings:
 
-- [ ] App info.
-- [ ] Privacy explanation.
+- [x] App info.
+- [x] Privacy explanation.
 - [ ] Exported files management if needed.
-- [ ] Delete all local data debug option for TestFlight or development.
-- [ ] App version/build number.
+- [x] Delete all local data debug option for TestFlight or development.
+- [x] App version/build number.
 
 Post-MVP settings:
 
@@ -1299,7 +1299,7 @@ Tasks:
 
 - [ ] Decide which features are free in TestFlight.
 - [ ] Decide which features are future Pro.
-- [ ] Avoid hard-coding paywall decisions into core components.
+- [x] Avoid hard-coding paywall decisions into core components.
 - [ ] Design feature entitlement layer later.
 
 ### 19.2 StoreKit Later
