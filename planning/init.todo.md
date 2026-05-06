@@ -1515,34 +1515,34 @@ Recommended implementation sequence:
 
 ### Must happen before Timeline is useful
 
-- [ ] Project bootstrap
-- [ ] Data models
-- [ ] Sample data or manual creation
+- [x] Project bootstrap
+- [x] Data models
+- [x] Sample data or manual creation
 
 ### Must happen before Map is useful
 
-- [ ] Memory events with coordinates
-- [ ] Location entry/search
-- [ ] Map annotation model
+- [x] Memory events with coordinates
+- [x] Location entry/search
+- [x] Map annotation model
 
 ### Must happen before Recap is useful
 
-- [ ] Memories by year
-- [ ] Timeline/data queries
-- [ ] Media/cover images improve quality but are not strictly required
+- [x] Memories by year
+- [x] Timeline/data queries
+- [x] Media/cover images improve quality but are not strictly required
 
 ### Must happen before Print-ready PDF is useful
 
-- [ ] Recap/data stats
-- [ ] Event detail data
-- [ ] Export renderer
-- [ ] PDF service
+- [x] Recap/data stats
+- [x] Event detail data
+- [x] Export renderer
+- [x] PDF service
 
 ### Must happen before TestFlight
 
 - [ ] Golden path works
-- [ ] Import errors are handled
-- [ ] Privacy copy is clear
+- [x] Import errors are handled
+- [x] Privacy copy is clear
 - [ ] Local data persists
 - [ ] Export files open outside app
 
@@ -1693,19 +1693,19 @@ Before TestFlight:
 
 Use language like:
 
-- [ ] “Turn your event tickets into a personal timeline.”
-- [ ] “Import passes and ticket files you choose.”
-- [ ] “Create beautiful annual recaps.”
-- [ ] “Export shareable images and PDFs.”
-- [ ] “Make print-ready keepsake PDFs.”
+- [x] “Turn your event tickets into a personal timeline.”
+- [x] “Import passes and ticket files you choose.”
+- [x] “Create beautiful annual recaps.”
+- [x] “Export shareable images and PDFs.”
+- [x] “Make print-ready keepsake PDFs.”
 
 Avoid language like:
 
-- [ ] “Automatically reads all Wallet tickets.”
-- [ ] “Backs up your Wallet.”
-- [ ] “Copies all Wallet passes.”
-- [ ] “Stores your ticket credentials in the cloud.”
-- [ ] “Publicly shares your event history automatically.”
+- [x] “Automatically reads all Wallet tickets.”
+- [x] “Backs up your Wallet.”
+- [x] “Copies all Wallet passes.”
+- [x] “Stores your ticket credentials in the cloud.”
+- [x] “Publicly shares your event history automatically.”
 
 ---
 
