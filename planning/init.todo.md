@@ -516,9 +516,9 @@ Fields:
 MVP behavior:
 
 - [x] Store pasted Spotify playlist URL.
-- [ ] Normalize Spotify URL/URI if possible.
-- [ ] Validate basic Spotify URL format.
-- [ ] Allow opening Spotify link externally.
+- [x] Normalize Spotify URL/URI if possible.
+- [x] Validate basic Spotify URL format.
+- [x] Allow opening Spotify link externally.
 
 ### 6.6 `AnnualRecap` Checklist
 
@@ -585,11 +585,11 @@ Responsibilities:
 
 Checklist:
 
-- [ ] Define app media directory structure.
-- [ ] Implement image copy/import plan.
+- [x] Define app media directory structure.
+- [x] Implement image copy/import plan.
 - [ ] Implement video copy/import plan.
-- [ ] Implement thumbnail generation plan.
-- [ ] Handle filename collisions.
+- [x] Implement thumbnail generation plan.
+- [x] Handle filename collisions. → UUID-based filenames.
 - [ ] Handle large files.
 - [ ] Handle import cancellation.
 - [ ] Handle missing source file errors.
@@ -613,9 +613,9 @@ Checklist:
 - [ ] Decide MapKit local search API usage.
 - [ ] Build venue search UI integration plan.
 - [ ] Store selected coordinate.
-- [ ] Support manual text-only location.
-- [ ] Support no-location events.
-- [ ] Avoid requiring current user location.
+- [x] Support manual text-only location.
+- [x] Support no-location events.
+- [x] Avoid requiring current user location.
 
 Acceptance criteria:
 
@@ -661,12 +661,12 @@ Responsibilities:
 
 Checklist:
 
-- [ ] Accept playlist URLs.
-- [ ] Extract playlist ID where possible.
-- [ ] Normalize to URI/external URL.
-- [ ] Reject clearly invalid URLs with helpful message.
-- [ ] Open link externally.
-- [ ] Defer OAuth to Post-MVP unless needed.
+- [x] Accept playlist URLs.
+- [x] Extract playlist ID where possible.
+- [x] Normalize to URI/external URL.
+- [x] Reject clearly invalid URLs with helpful message.
+- [x] Open link externally.
+- [x] Defer OAuth to Post-MVP unless needed.
 
 ### 7.5 `RecapGenerator`
 
@@ -865,10 +865,10 @@ Sections:
 - [x] Title/category/date
 - [x] Venue/location
 - [ ] Pass snapshot
-- [ ] Media gallery
+- [x] Media gallery
 - [x] Notes
-- [ ] Spotify playlist
-- [ ] Map preview
+- [x] Spotify playlist
+- [x] Map preview
 - [ ] Export/share actions
 
 Tasks:
@@ -883,13 +883,13 @@ Tasks:
 
 ### 10.2 Media Gallery
 
-- [ ] Show image thumbnails.
-- [ ] Show video thumbnails.
+- [x] Show image thumbnails.
+- [x] Show video thumbnails.
 - [ ] Tap media to preview.
-- [ ] Add media button.
-- [ ] Remove media action.
-- [ ] Change cover action.
-- [ ] Handle missing media file.
+- [x] Add media button.
+- [x] Remove media action.
+- [x] Change cover action.
+- [x] Handle missing media file.
 - [ ] Handle large media collection.
 
 ### 10.3 Notes
@@ -902,13 +902,13 @@ Tasks:
 
 ### 10.4 Spotify Link
 
-- [ ] Add Spotify URL input.
-- [ ] Validate URL.
-- [ ] Save link.
-- [ ] Show playlist card.
-- [ ] Open playlist externally.
-- [ ] Remove playlist link.
-- [ ] Handle invalid link gracefully.
+- [x] Add Spotify URL input.
+- [x] Validate URL.
+- [x] Save link.
+- [x] Show playlist card.
+- [x] Open playlist externally.
+- [x] Remove playlist link.
+- [x] Handle invalid link gracefully.
 
 ---
 
@@ -916,26 +916,26 @@ Tasks:
 
 ### 11.1 PhotosPicker Integration
 
-- [ ] Add photo picker entry point from detail page.
-- [ ] Allow multiple image selection.
-- [ ] Allow video selection if practical.
-- [ ] Copy selected media into app storage.
-- [ ] Generate thumbnails.
-- [ ] Create `MediaAsset` records.
-- [ ] Set first added media as cover if no cover exists.
-- [ ] Avoid requesting full Photos access at launch.
+- [x] Add photo picker entry point from detail page.
+- [x] Allow multiple image selection.
+- [x] Allow video selection if practical.
+- [x] Copy selected media into app storage.
+- [x] Generate thumbnails.
+- [x] Create `MediaAsset` records.
+- [x] Set first added media as cover if no cover exists.
+- [x] Avoid requesting full Photos access at launch.
 
 ### 11.2 Media Metadata
 
 - [ ] Read captured date when available.
-- [ ] Read dimensions.
+- [x] Read dimensions.
 - [ ] Read duration for video.
 - [ ] Read location metadata if available and permitted.
-- [ ] Do not require metadata for successful import.
+- [x] Do not require metadata for successful import.
 
 ### 11.3 Media Error Handling
 
-- [ ] Handle user cancellation.
+- [x] Handle user cancellation.
 - [ ] Handle unsupported media.
 - [ ] Handle file copy failure.
 - [ ] Handle thumbnail failure.
@@ -947,33 +947,33 @@ Tasks:
 
 ### 12.1 Map Data
 
-- [ ] Query events with latitude and longitude.
-- [ ] Exclude events without coordinates.
-- [ ] Build map annotation model.
-- [ ] Calculate initial map region.
-- [ ] Handle one located event.
-- [ ] Handle many located events.
-- [ ] Handle no located events.
+- [x] Query events with latitude and longitude.
+- [x] Exclude events without coordinates.
+- [x] Build map annotation model.
+- [x] Calculate initial map region. → Using MapCameraPosition.automatic.
+- [x] Handle one located event.
+- [x] Handle many located events.
+- [x] Handle no located events.
 
 ### 12.2 Map UI
 
-- [ ] Build Map screen.
-- [ ] Add event markers.
-- [ ] Style markers by category.
-- [ ] Add selected marker state.
-- [ ] Add bottom preview card.
-- [ ] Tap preview to detail.
-- [ ] Add year filter.
-- [ ] Add category filter.
-- [ ] Add reset filters action.
+- [x] Build Map screen.
+- [x] Add event markers.
+- [x] Style markers by category.
+- [x] Add selected marker state.
+- [x] Add bottom preview card.
+- [x] Tap preview to detail.
+- [x] Add year filter.
+- [x] Add category filter.
+- [x] Add reset filters action.
 
 ### 12.3 Location Editing
 
-- [ ] Allow adding location from create/edit form.
-- [ ] Allow changing location.
+- [x] Allow adding location from create/edit form.
+- [x] Allow changing location.
 - [ ] Allow removing exact coordinates.
-- [ ] Store location confidence.
-- [ ] Let text-only location remain without coordinate.
+- [x] Store location confidence.
+- [x] Let text-only location remain without coordinate.
 
 Acceptance criteria:
 
@@ -1453,18 +1453,18 @@ Recommended implementation sequence:
 
 ### Step 6: Media
 
-- [ ] Add media picker.
-- [ ] Store selected media.
-- [ ] Generate thumbnails.
-- [ ] Render gallery.
-- [ ] Set cover image.
+- [x] Add media picker.
+- [x] Store selected media.
+- [x] Generate thumbnails.
+- [x] Render gallery.
+- [x] Set cover image.
 
 ### Step 7: Map
 
-- [ ] Add location fields/search.
-- [ ] Render map pins.
-- [ ] Add filters.
-- [ ] Add marker preview.
+- [x] Add location fields/search.
+- [x] Render map pins.
+- [x] Add filters.
+- [x] Add marker preview.
 
 ### Step 8: `.pkpass` Import
 
@@ -1476,10 +1476,10 @@ Recommended implementation sequence:
 
 ### Step 9: Spotify Link
 
-- [ ] Add playlist URL field.
-- [ ] Validate/normalize.
-- [ ] Render playlist card.
-- [ ] Open externally.
+- [x] Add playlist URL field.
+- [x] Validate/normalize.
+- [x] Render playlist card.
+- [x] Open externally.
 
 ### Step 10: Recap
 

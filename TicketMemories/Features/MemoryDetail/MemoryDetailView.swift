@@ -1,10 +1,11 @@
 import SwiftUI
 import SwiftData
+import MapKit
 
 struct MemoryDetailView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
-    let event: MemoryEvent
+    @Bindable var event: MemoryEvent
     @State private var showingEditSheet = false
     @State private var showingDeleteConfirmation = false
 
@@ -95,11 +96,37 @@ struct MemoryDetailView: View {
     private var detailContent: some View {
         VStack(alignment: .leading, spacing: 24) {
             infoSection
+
+            MediaGallerySection(event: event)
+
             if let notes = event.notes, !notes.isEmpty {
                 notesSection(notes)
             }
+
+            SpotifyLinkSection(event: event)
+
+            if event.hasCoordinates {
+                mapPreview
+            }
         }
         .padding(20)
+    }
+
+    private var mapPreview: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(String(localized: "detail.mapPreview", defaultValue: "Location"))
+                .font(.headline)
+
+            if let lat = event.latitude, let lon = event.longitude {
+                Map {
+                    Marker(event.title, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon))
+                        .tint(event.category.color)
+                }
+                .frame(height: 180)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .allowsHitTesting(false)
+            }
+        }
     }
 
     private var infoSection: some View {
