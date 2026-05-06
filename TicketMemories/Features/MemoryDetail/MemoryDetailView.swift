@@ -39,6 +39,8 @@ struct MemoryDetailView: View {
                         )
                     }
 
+                    EventExportButton(event: event)
+
                     Divider()
 
                     Button(role: .destructive) {

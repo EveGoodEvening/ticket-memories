@@ -59,9 +59,22 @@ struct RecapView: View {
                 if let year = selectedYear {
                     let stats = RecapGenerator.generateStats(for: memories, year: year)
                     let highlights = RecapGenerator.highlightEvents(from: memories, year: year)
+                    let yearEvents = memories.filter { event in
+                        guard let date = event.startDate else { return false }
+                        return Calendar.current.component(.year, from: date) == year
+                    }.sorted { ($0.startDate ?? .distantPast) < ($1.startDate ?? .distantPast) }
 
                     RecapStatsCard(year: year, stats: stats)
                     RecapHighlightsCard(highlights: highlights)
+
+                    RecapExportButtons(
+                        year: year,
+                        stats: stats,
+                        highlights: highlights,
+                        allEvents: yearEvents
+                    )
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(.large)
                 }
             }
             .padding()

@@ -705,13 +705,13 @@ Responsibilities:
 
 Checklist:
 
-- [ ] Define export image sizes.
-- [ ] Define event card aspect ratios.
-- [ ] Define recap long-image size.
-- [ ] Render at high enough resolution.
-- [ ] Save export artifact locally.
-- [ ] Present share sheet.
-- [ ] Handle export errors.
+- [x] Define export image sizes.
+- [x] Define event card aspect ratios.
+- [x] Define recap long-image size.
+- [x] Render at high enough resolution. → 2x scale.
+- [x] Save export artifact locally.
+- [x] Present share sheet.
+- [x] Handle export errors.
 
 ### 7.7 `PDFExportService`
 
@@ -722,19 +722,19 @@ Responsibilities:
 
 Checklist:
 
-- [ ] Define supported page sizes: A4, Letter.
-- [ ] Define margins.
+- [x] Define supported page sizes: A4, Letter.
+- [x] Define margins. → 50pt.
 - [ ] Define image compression policy.
-- [ ] Define page templates.
-- [ ] Add cover page.
-- [ ] Add stats page.
+- [x] Define page templates.
+- [x] Add cover page.
+- [x] Add stats page.
 - [ ] Add map page if location data exists.
-- [ ] Add event pages.
+- [x] Add event pages.
 - [ ] Add media grid pages.
-- [ ] Add optional notes.
+- [x] Add optional notes.
 - [ ] Add optional Spotify link/QR placeholder.
-- [ ] Save PDF locally.
-- [ ] Share/export PDF.
+- [x] Save PDF locally.
+- [x] Share/export PDF.
 - [ ] Test print readability.
 
 Acceptance criteria:
@@ -869,7 +869,7 @@ Sections:
 - [x] Notes
 - [x] Spotify playlist
 - [x] Map preview
-- [ ] Export/share actions
+- [x] Export/share actions
 
 Tasks:
 
@@ -1052,7 +1052,7 @@ Acceptance criteria:
 - [x] Show empty state for no memories.
 - [x] Show preview for selected year.
 - [ ] Add regenerate action.
-- [ ] Add export action.
+- [x] Add export action.
 
 ### 14.2 Recap Stats
 
@@ -1106,44 +1106,44 @@ Acceptance criteria:
 
 ### 15.1 Event Card Image Export
 
-- [ ] Define event card export size.
-- [ ] Include title.
-- [ ] Include date.
-- [ ] Include venue/city.
-- [ ] Include category.
+- [x] Define event card export size. → 1080x1350.
+- [x] Include title.
+- [x] Include date.
+- [x] Include venue/city.
+- [x] Include category.
 - [ ] Include cover/pass visual.
-- [ ] Include subtle app branding if desired.
-- [ ] Render image.
-- [ ] Save to temporary or exports directory.
-- [ ] Open share sheet.
+- [x] Include subtle app branding if desired.
+- [x] Render image.
+- [x] Save to temporary or exports directory.
+- [x] Open share sheet.
 
 ### 15.2 Annual Recap Image Export
 
-- [ ] Define long image export size.
+- [x] Define long image export size. → 1080 width.
 - [ ] Render selected recap template.
-- [ ] Include year stats.
+- [x] Include year stats.
 - [ ] Include map if available.
 - [ ] Include photos if available.
-- [ ] Save image.
-- [ ] Open share sheet.
+- [x] Save image.
+- [x] Open share sheet.
 
 ### 15.3 Annual Recap PDF Export
 
-- [ ] Define PDF page size.
-- [ ] Add cover page.
-- [ ] Add stats page.
+- [x] Define PDF page size.
+- [x] Add cover page.
+- [x] Add stats page.
 - [ ] Add selected recap view.
-- [ ] Add selected events summary.
-- [ ] Save PDF.
-- [ ] Open share sheet.
+- [x] Add selected events summary.
+- [x] Save PDF.
+- [x] Open share sheet.
 
 ### 15.4 Export Error Handling
 
-- [ ] Handle rendering failure.
-- [ ] Handle file write failure.
+- [x] Handle rendering failure.
+- [x] Handle file write failure.
 - [ ] Handle missing media file.
 - [ ] Handle no exportable events.
-- [ ] Show user-friendly error message.
+- [x] Show user-friendly error message.
 
 ---
 
@@ -1153,44 +1153,44 @@ Acceptance criteria:
 
 MVP print-ready PDF only. No order checkout.
 
-- [ ] Do not integrate print vendor.
-- [ ] Do not collect shipping address.
-- [ ] Do not collect payment for physical goods.
-- [ ] Do not build fulfillment status.
-- [ ] Generate local PDF only.
+- [x] Do not integrate print vendor.
+- [x] Do not collect shipping address.
+- [x] Do not collect payment for physical goods.
+- [x] Do not build fulfillment status.
+- [x] Generate local PDF only.
 
 ### 16.2 PDF Options UI
 
-- [ ] Select year.
+- [x] Select year.
 - [ ] Select events.
 - [ ] Select template.
-- [ ] Select page size: A4 / Letter.
-- [ ] Include/exclude photos.
-- [ ] Include/exclude notes.
-- [ ] Include/exclude map.
-- [ ] Include/exclude Spotify link/QR placeholder.
+- [x] Select page size: A4 / Letter.
+- [x] Include/exclude photos.
+- [x] Include/exclude notes.
+- [x] Include/exclude map.
+- [x] Include/exclude Spotify link/QR placeholder.
 - [ ] Preview before export if practical.
 
 ### 16.3 Yearbook Template
 
 Pages:
 
-- [ ] Cover page.
-- [ ] Year stats page.
+- [x] Cover page.
+- [x] Year stats page.
 - [ ] Map page.
 - [ ] Timeline summary page.
-- [ ] Event detail pages.
-- [ ] Closing page.
+- [x] Event detail pages.
+- [x] Closing page.
 
 Event page content:
 
-- [ ] Title.
-- [ ] Date.
-- [ ] Venue/city.
-- [ ] Category.
+- [x] Title.
+- [x] Date.
+- [x] Venue/city.
+- [x] Category.
 - [ ] Cover image/pass visual.
 - [ ] Selected photos.
-- [ ] Notes if included.
+- [x] Notes if included.
 - [ ] Spotify link if included.
 
 ### 16.4 Ticket Wall Template
@@ -1491,15 +1491,15 @@ Recommended implementation sequence:
 
 ### Step 11: Export Image
 
-- [ ] Export event card image.
-- [ ] Export recap image.
-- [ ] Share/save exported images.
+- [x] Export event card image.
+- [x] Export recap image.
+- [x] Share/save exported images.
 
 ### Step 12: Export PDF
 
-- [ ] Export annual recap PDF.
-- [ ] Export print-ready PDF.
-- [ ] Share/save PDFs.
+- [x] Export annual recap PDF.
+- [x] Export print-ready PDF.
+- [x] Share/save PDFs.
 
 ### Step 13: Polish
 
