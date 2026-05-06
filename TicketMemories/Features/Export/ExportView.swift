@@ -125,32 +125,45 @@ struct RecapExportButtons: View {
 
     @MainActor
     private func exportRecapPDF() {
-        do {
-            let url = try PDFExportService.generateRecapPDF(year: year, stats: stats, events: allEvents)
-            exportedPDFURL = url
-            showingPDFShare = true
-        } catch {
-            exportError = error.localizedDescription
-            showingError = true
+        Task {
+            do {
+                let url = try await PDFExportService.generateRecapPDF(year: year, stats: stats, events: allEvents)
+                exportedPDFURL = url
+                showingPDFShare = true
+            } catch {
+                exportError = error.localizedDescription
+                showingError = true
+            }
         }
     }
 
     @MainActor
     private func exportPrintReadyPDF() {
-        do {
-            let url = try PDFExportService.generatePrintReadyPDF(year: year, stats: stats, events: allEvents, options: pdfOptions)
-            exportedPDFURL = url
-            showingOptions = false
-            showingPrintPDFShare = true
-        } catch {
-            exportError = error.localizedDescription
-            showingError = true
+        Task {
+            do {
+                let url = try await PDFExportService.generatePrintReadyPDF(year: year, stats: stats, events: allEvents, options: pdfOptions)
+                exportedPDFURL = url
+                showingOptions = false
+                showingPrintPDFShare = true
+            } catch {
+                exportError = error.localizedDescription
+                showingError = true
+            }
         }
     }
 
     private var printOptionsSheet: some View {
         NavigationStack {
             Form {
+                Section(String(localized: "export.options.year", defaultValue: "Year")) {
+                    HStack {
+                        Text(String(localized: "export.options.yearLabel", defaultValue: "Exporting year"))
+                        Spacer()
+                        Text("\(year)")
+                            .foregroundStyle(.secondary)
+                    }
+                }
+
                 Section(String(localized: "export.options.pageSize", defaultValue: "Page Size")) {
                     Picker(String(localized: "export.options.size", defaultValue: "Size"), selection: $pdfOptions.pageSize) {
                         Text("A4").tag(PDFExportOptions.PageSize.a4)

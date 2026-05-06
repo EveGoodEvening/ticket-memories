@@ -728,11 +728,11 @@ Checklist:
 - [x] Define page templates.
 - [x] Add cover page.
 - [x] Add stats page.
-- [ ] Add map page if location data exists.
+- [x] Add map page if location data exists.
 - [x] Add event pages.
 - [ ] Add media grid pages.
 - [x] Add optional notes.
-- [ ] Add optional Spotify link/QR placeholder.
+- [x] Add optional Spotify link/QR placeholder.
 - [x] Save PDF locally.
 - [x] Share/export PDF.
 - [ ] Test print readability.

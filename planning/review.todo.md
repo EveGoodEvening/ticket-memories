@@ -75,9 +75,9 @@ These items have toggle UI that controls nothing. Users see options that are lie
 Checklist:
 
 - [x] Revert `init.todo.md` line 1168 to `[ ]`
-- [ ] In `PDFExportService.renderEventPage`, check `options.includePhotos`
-- [ ] Read event's `MediaAsset` images from disk, render a photo grid below notes section
-- [ ] Handle missing image files gracefully (skip, don't crash)
+- [x] In `PDFExportService.renderEventPage`, check `options.includePhotos`
+- [x] Read event's `MediaAsset` images from disk, render a photo grid below notes section
+- [x] Handle missing image files gracefully (skip, don't crash)
 - [ ] Mark `[x]` only after the toggle controls real behavior
 
 ### 2.2 PDF "Include/exclude map" toggle does nothing
@@ -89,9 +89,9 @@ Checklist:
 Checklist:
 
 - [x] Revert `init.todo.md` line 1170 to `[ ]`
-- [ ] In `PDFExportService`, add a `renderMapPage` method
-- [ ] Use `MKMapSnapshotter` to render a static map image with event pins
-- [ ] Gate the map page on `options.includeMap` and at least one event having coordinates
+- [x] In `PDFExportService`, add a `renderMapPage` method
+- [x] Use `MKMapSnapshotter` to render a static map image with event pins
+- [x] Gate the map page on `options.includeMap` and at least one event having coordinates
 - [ ] Mark `[x]` only after the toggle controls real behavior
 
 ### 2.3 PDF "Include/exclude Spotify link" toggle does nothing
@@ -106,11 +106,11 @@ Checklist:
 
 - [x] Revert `init.todo.md` line 1171 to `[ ]`
 - [x] Revert `init.todo.md` line 1258 to `[ ]`
-- [ ] In `PDFExportService.renderEventPage`, check `options.includeSpotifyLink`
-- [ ] When event has a `SpotifyPlaylistLink`, render the URL text on the event page
-- [ ] Optionally generate a QR code via `CIFilter("CIQRCodeGenerator")` for the Spotify URL
-- [ ] Gate rendering on `options.includeSpotifyLink` so the toggle actually works
-- [ ] Also mark `init.todo.md` line 735 (`[ ] Add optional Spotify link/QR placeholder`) as covered by this work
+- [x] In `PDFExportService.renderEventPage`, check `options.includeSpotifyLink`
+- [x] When event has a `SpotifyPlaylistLink`, render the URL text on the event page
+- [x] Optionally generate a QR code via `CIFilter("CIQRCodeGenerator")` for the Spotify URL
+- [x] Gate rendering on `options.includeSpotifyLink` so the toggle actually works
+- [x] Also mark `init.todo.md` line 735 (`[ ] Add optional Spotify link/QR placeholder`) as covered by this work
 - [ ] Mark `[x]` only after the toggle controls real behavior
 
 ### 2.4 PDF "Select year" not in options sheet
@@ -122,8 +122,8 @@ Checklist:
 Checklist:
 
 - [x] Revert `init.todo.md` line 1164 to `[ ]`
-- [ ] Add a read-only year label to `printOptionsSheet` so user sees which year they're exporting
-- [ ] No year picker needed — year is inherited from RecapView context
+- [x] Add a read-only year label to `printOptionsSheet` so user sees which year they're exporting
+- [x] No year picker needed — year is inherited from RecapView context
 
 ---
 
@@ -138,8 +138,8 @@ Checklist:
 Checklist:
 
 - [x] Revert `init.todo.md` line 1229 to `[ ]`
-- [ ] Add a short disclaimer text to `ImportPassView.swift` below the description, e.g.: "Only event metadata (title, date, colors) is extracted. Barcodes, authentication tokens, and raw ticket credentials are never stored."
-- [ ] Use localized string key for the disclaimer
+- [x] Add a short disclaimer text to `ImportPassView.swift` below the description, e.g.: "Only event metadata (title, date, colors) is extracted. Barcodes, authentication tokens, and raw ticket credentials are never stored."
+- [x] Use localized string key for the disclaimer
 - [ ] Mark `[x]` after implemented
 
 ### 3.2 Expired pass handling
@@ -151,9 +151,9 @@ Checklist:
 Checklist:
 
 - [x] Revert `init.todo.md` line 1035 to `[ ]`
-- [ ] In `PassImportService.importPass`, check `pass.expirationDate`
-- [ ] If expired: still allow import (it's a memory), but set a flag on `PassImportResult` like `isExpired: Bool`
-- [ ] In `ImportPassView`, show an informational note: "This pass has expired, but you can still save it as a memory."
+- [x] In `PassImportService.importPass`, check `pass.expirationDate`
+- [x] If expired: still allow import (it's a memory), but set a flag on `PassImportResult` like `isExpired: Bool`
+- [x] In `ImportPassView`, show an informational note: "This pass has expired, but you can still save it as a memory."
 - [ ] Mark `[x]` after implemented
 
 ### 3.3 Pass visuals fallback
@@ -165,10 +165,10 @@ Checklist:
 Checklist:
 
 - [x] Revert `init.todo.md` line 1037 to `[ ]`
-- [ ] In `PassImportService.importPass`, after `result.thumbnailData = pass.icon`:
+- [x] In `PassImportService.importPass`, after `result.thumbnailData = pass.icon`:
   - If nil, generate a fallback thumbnail using the pass's background color + organization name text
   - Or simply log and continue (current behavior) but add a note in the confirmation UI: "No pass image was found"
-- [ ] In `ImportPassView`, if no thumbnail: show category-colored placeholder instead of blank space
+- [x] In `ImportPassView`, if no thumbnail: show category-colored placeholder instead of blank space
 - [ ] Mark `[x]` after implemented
 
 ---

@@ -87,6 +87,13 @@ struct ImportPassView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 32)
 
+            Text(String(localized: "import.prompt.disclaimer",
+                         defaultValue: "Only event metadata (title, date, colors) is extracted. Barcodes, authentication tokens, and raw ticket credentials are never stored."))
+                .font(.caption)
+                .foregroundStyle(.tertiary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 32)
+
             Button {
                 showingFilePicker = true
             } label: {
@@ -112,6 +119,30 @@ struct ImportPassView: View {
                         systemImage: "exclamationmark.triangle"
                     )
                     .foregroundStyle(.orange)
+                    .font(.subheadline)
+                }
+            }
+
+            if let result = importResult, result.isExpired {
+                Section {
+                    Label(
+                        String(localized: "import.expired.note",
+                               defaultValue: "This pass has expired, but you can still save it as a memory."),
+                        systemImage: "clock.badge.exclamationmark"
+                    )
+                    .foregroundStyle(.secondary)
+                    .font(.subheadline)
+                }
+            }
+
+            if let result = importResult, !result.hasThumbnail {
+                Section {
+                    Label(
+                        String(localized: "import.noImage.note",
+                               defaultValue: "No pass image was found. A placeholder will be used."),
+                        systemImage: "photo.badge.exclamationmark"
+                    )
+                    .foregroundStyle(.secondary)
                     .font(.subheadline)
                 }
             }

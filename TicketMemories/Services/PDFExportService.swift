@@ -1,6 +1,8 @@
 import SwiftUI
 import UIKit
 import PDFKit
+import MapKit
+import CoreImage.CIFilterBuiltins
 
 struct PDFExportOptions {
     enum PageSize {
@@ -31,9 +33,11 @@ struct PDFExportService {
         stats: RecapStats,
         events: [MemoryEvent],
         options: PDFExportOptions = PDFExportOptions()
-    ) throws -> URL {
+    ) async throws -> URL {
         let pageSize = options.pageSize.dimensions
         let contentWidth = pageSize.width - (margin * 2)
+        let mapSize = CGSize(width: pageSize.width - margin * 2, height: pageSize.height - margin * 2 - 50)
+        let mapSnapshot = options.includeMap ? await captureMapSnapshot(events: events, size: mapSize) : nil
 
         let pdfRenderer = UIGraphicsPDFRenderer(bounds: CGRect(origin: .zero, size: pageSize))
 
@@ -44,6 +48,8 @@ struct PDFExportService {
             for event in events.prefix(20) {
                 renderEventPage(context: context, pageSize: pageSize, event: event, contentWidth: contentWidth, options: options)
             }
+
+            renderMapPage(context: context, pageSize: pageSize, events: events, options: options, mapSnapshot: mapSnapshot)
         }
 
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -62,9 +68,11 @@ struct PDFExportService {
         stats: RecapStats,
         events: [MemoryEvent],
         options: PDFExportOptions = PDFExportOptions()
-    ) throws -> URL {
+    ) async throws -> URL {
         let pageSize = options.pageSize.dimensions
         let contentWidth = pageSize.width - (margin * 2)
+        let mapSize = CGSize(width: pageSize.width - margin * 2, height: pageSize.height - margin * 2 - 50)
+        let mapSnapshot = options.includeMap ? await captureMapSnapshot(events: events, size: mapSize) : nil
 
         let pdfRenderer = UIGraphicsPDFRenderer(bounds: CGRect(origin: .zero, size: pageSize))
 
@@ -76,6 +84,7 @@ struct PDFExportService {
                 renderEventPage(context: context, pageSize: pageSize, event: event, contentWidth: contentWidth, options: options)
             }
 
+            renderMapPage(context: context, pageSize: pageSize, events: events, options: options, mapSnapshot: mapSnapshot)
             renderClosingPage(context: context, pageSize: pageSize)
         }
 
@@ -202,7 +211,141 @@ struct PDFExportService {
                 .font: bodyFont,
                 .foregroundColor: UIColor.secondaryLabel,
             ])
+            yOffset += min(200, (notes as NSString).boundingRect(
+                with: CGSize(width: contentWidth, height: 200),
+                options: .usesLineFragmentOrigin,
+                attributes: [.font: bodyFont],
+                context: nil
+            ).height) + 16
         }
+
+        if options.includePhotos {
+            let imageAssets = event.mediaAssets.filter { $0.type == .image }
+            if !imageAssets.isEmpty {
+                yOffset += 16
+                let photoSize: CGFloat = (contentWidth - 8) / 3
+                var xOffset: CGFloat = margin
+                for asset in imageAssets.prefix(6) {
+                    let imageURL = asset.thumbnailPath.map { MediaStorageService.thumbnailURL(for: $0) }
+                        ?? MediaStorageService.fullURL(for: asset.localFilePath)
+                    if let data = try? Data(contentsOf: imageURL),
+                       let image = UIImage(data: data) {
+                        let rect = CGRect(x: xOffset, y: yOffset, width: photoSize, height: photoSize)
+                        image.draw(in: rect)
+                        xOffset += photoSize + 4
+                        if xOffset + photoSize > pageSize.width - margin {
+                            xOffset = margin
+                            yOffset += photoSize + 4
+                        }
+                    }
+                }
+            }
+        }
+
+        if options.includeSpotifyLink, let spotifyLink = event.spotifyLink {
+            yOffset += 20
+            let spotifyLabel = "Spotify Playlist" as NSString
+            spotifyLabel.draw(at: CGPoint(x: margin, y: yOffset), withAttributes: [.font: labelFont, .foregroundColor: UIColor.secondaryLabel])
+            yOffset += 18
+            let urlText = spotifyLink.externalURL as NSString
+            urlText.draw(at: CGPoint(x: margin, y: yOffset), withAttributes: [.font: bodyFont, .foregroundColor: UIColor.systemBlue])
+            yOffset += 20
+
+            if let qrImage = generateQRCode(from: spotifyLink.externalURL) {
+                let qrSize: CGFloat = 80
+                let qrRect = CGRect(x: margin, y: yOffset, width: qrSize, height: qrSize)
+                qrImage.draw(in: qrRect)
+            }
+        }
+    }
+
+    static func renderMapPage(context: UIGraphicsPDFRendererContext, pageSize: CGSize, events: [MemoryEvent], options: PDFExportOptions, mapSnapshot: UIImage?) {
+        guard options.includeMap else { return }
+        let eventsWithCoordinates = events.filter { $0.hasCoordinates }
+        guard !eventsWithCoordinates.isEmpty else { return }
+        guard let mapImage = mapSnapshot else { return }
+
+        context.beginPage()
+
+        let headerFont = UIFont.systemFont(ofSize: 24, weight: .bold)
+        ("Map" as NSString).draw(at: CGPoint(x: margin, y: margin), withAttributes: [.font: headerFont, .foregroundColor: UIColor.label])
+
+        let mapRect = CGRect(x: margin, y: margin + 50, width: pageSize.width - margin * 2, height: pageSize.height - margin * 2 - 50)
+        mapImage.draw(in: mapRect)
+    }
+
+    static func captureMapSnapshot(events: [MemoryEvent], size: CGSize) async -> UIImage? {
+        let coordinates = events.compactMap { event -> CLLocationCoordinate2D? in
+            guard let lat = event.latitude, let lon = event.longitude else { return nil }
+            return CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        }
+        guard !coordinates.isEmpty else { return nil }
+
+        let region = regionForCoordinates(coordinates)
+        let snapshotOptions = MKMapSnapshotter.Options()
+        snapshotOptions.region = region
+        snapshotOptions.size = size
+        snapshotOptions.scale = 2.0
+
+        let snapshotter = MKMapSnapshotter(options: snapshotOptions)
+        guard let snapshot = try? await snapshotter.start() else { return nil }
+
+        let renderer = UIGraphicsImageRenderer(size: snapshot.image.size)
+        return renderer.image { ctx in
+            snapshot.image.draw(at: .zero)
+            let pinSize = CGSize(width: 12, height: 12)
+            for coordinate in coordinates {
+                let point = snapshot.point(for: coordinate)
+                let pinRect = CGRect(
+                    x: point.x - pinSize.width / 2,
+                    y: point.y - pinSize.height / 2,
+                    width: pinSize.width,
+                    height: pinSize.height
+                )
+                ctx.cgContext.setFillColor(UIColor.systemRed.cgColor)
+                ctx.cgContext.fillEllipse(in: pinRect)
+            }
+        }
+    }
+
+    private static func regionForCoordinates(_ coordinates: [CLLocationCoordinate2D]) -> MKCoordinateRegion {
+        guard !coordinates.isEmpty else {
+            return MKCoordinateRegion()
+        }
+        var minLat = coordinates[0].latitude
+        var maxLat = coordinates[0].latitude
+        var minLon = coordinates[0].longitude
+        var maxLon = coordinates[0].longitude
+
+        for coord in coordinates {
+            minLat = min(minLat, coord.latitude)
+            maxLat = max(maxLat, coord.latitude)
+            minLon = min(minLon, coord.longitude)
+            maxLon = max(maxLon, coord.longitude)
+        }
+
+        let center = CLLocationCoordinate2D(
+            latitude: (minLat + maxLat) / 2,
+            longitude: (minLon + maxLon) / 2
+        )
+        let span = MKCoordinateSpan(
+            latitudeDelta: max((maxLat - minLat) * 1.3, 0.01),
+            longitudeDelta: max((maxLon - minLon) * 1.3, 0.01)
+        )
+        return MKCoordinateRegion(center: center, span: span)
+    }
+
+    private static func generateQRCode(from string: String) -> UIImage? {
+        let context = CIContext()
+        let filter = CIFilter.qrCodeGenerator()
+        filter.message = Data(string.utf8)
+        filter.correctionLevel = "M"
+
+        guard let outputImage = filter.outputImage else { return nil }
+        let scale = 80.0 / outputImage.extent.width
+        let scaledImage = outputImage.transformed(by: CGAffineTransform(scaleX: scale, y: scale))
+        guard let cgImage = context.createCGImage(scaledImage, from: scaledImage.extent) else { return nil }
+        return UIImage(cgImage: cgImage)
     }
 
     private static func renderClosingPage(context: UIGraphicsPDFRendererContext, pageSize: CGSize) {

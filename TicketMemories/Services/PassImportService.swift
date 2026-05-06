@@ -14,6 +14,8 @@ struct PassImportResult {
     var backgroundColor: String?
     var labelColor: String?
     var thumbnailData: Data?
+    var isExpired: Bool = false
+    var hasThumbnail: Bool { thumbnailData != nil }
 }
 
 enum PassImportError: LocalizedError {
@@ -74,6 +76,10 @@ struct PassImportService {
         result.labelColor = pass.labelColor?.hexString
 
         result.thumbnailData = pass.icon
+
+        if let expirationDate = pass.expirationDate {
+            result.isExpired = expirationDate < Date()
+        }
 
         if result.title == nil && result.organizationName == nil && result.relevantDate == nil {
             throw PassImportError.noUsefulMetadata
