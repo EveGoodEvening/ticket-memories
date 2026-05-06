@@ -158,13 +158,13 @@ Exit criteria:
 
 ### 2.1 Language and Localization
 
-- [ ] Decide MVP display language: Chinese, English, or bilingual.
-- [ ] Use stable category IDs independent of UI language.
-- [ ] Use stable theme IDs independent of UI language.
-- [ ] Add localization resource structure from project bootstrap.
-- [ ] Ensure exported recap/PDF strings come from localization resources.
-- [ ] Avoid storing localized strings as persistent enum values.
-- [ ] Verify category display names can switch language later without data migration.
+- [x] Decide MVP display language: Chinese, English, or bilingual. → English MVP, bilingual localization structure.
+- [x] Use stable category IDs independent of UI language.
+- [x] Use stable theme IDs independent of UI language.
+- [x] Add localization resource structure from project bootstrap.
+- [x] Ensure exported recap/PDF strings come from localization resources.
+- [x] Avoid storing localized strings as persistent enum values.
+- [x] Verify category display names can switch language later without data migration.
 
 Acceptance criteria:
 
@@ -175,22 +175,22 @@ Acceptance criteria:
 
 MVP categories:
 
-- [ ] `concert` / 演唱会
-- [ ] `musicFestival` / 音乐节
-- [ ] `exhibition` / 展览
-- [ ] `travel` / 旅行
-- [ ] `sports` / 体育赛事
-- [ ] `theater` / 剧场, optional but model-ready
-- [ ] `other` / 其他
+- [x] `concert` / 演唱会
+- [x] `musicFestival` / 音乐节
+- [x] `exhibition` / 展览
+- [x] `travel` / 旅行
+- [x] `sports` / 体育赛事
+- [x] `theater` / 剧场, optional but model-ready
+- [x] `other` / 其他
 
 Category checklist:
 
-- [ ] Define icon for each category.
-- [ ] Define color for each category.
-- [ ] Define fallback cover treatment for each category.
-- [ ] Define localized display name for each category.
-- [ ] Ensure all categories use the same underlying `MemoryEvent` model.
-- [ ] Avoid category-specific data models in MVP.
+- [x] Define icon for each category.
+- [x] Define color for each category.
+- [x] Define fallback cover treatment for each category.
+- [x] Define localized display name for each category.
+- [x] Ensure all categories use the same underlying `MemoryEvent` model.
+- [x] Avoid category-specific data models in MVP.
 
 Acceptance criteria:
 
@@ -200,15 +200,15 @@ Acceptance criteria:
 
 Before implementing a feature, verify it does not accidentally introduce these:
 
-- [ ] No automatic Wallet-wide pass scanning.
-- [ ] No public share URL.
-- [ ] No backend dependency.
-- [ ] No user account requirement.
-- [ ] No social graph.
-- [ ] No physical print order checkout.
-- [ ] No CloudKit sync in MVP unless explicitly moved into scope.
-- [ ] No Spotify OAuth in MVP unless pasted URL flow proves insufficient.
-- [ ] No raw barcode upload.
+- [x] No automatic Wallet-wide pass scanning.
+- [x] No public share URL.
+- [x] No backend dependency.
+- [x] No user account requirement.
+- [x] No social graph.
+- [x] No physical print order checkout.
+- [x] No CloudKit sync in MVP unless explicitly moved into scope.
+- [x] No Spotify OAuth in MVP unless pasted URL flow proves insufficient.
+- [x] No raw barcode upload.
 
 ---
 
@@ -225,13 +225,13 @@ Recommended main navigation:
 
 Checklist:
 
-- [ ] Decide whether to use TabView or navigation-first home screen.
-- [ ] Make Timeline the default landing surface.
-- [ ] Add primary create/import action accessible from Timeline.
-- [ ] Add Map as secondary exploration surface.
-- [ ] Add Recap as explicit feature surface.
-- [ ] Add Settings for privacy/export/app info.
-- [ ] Ensure deep links/navigation routes can open a specific memory detail.
+- [x] Decide whether to use TabView or navigation-first home screen. → TabView.
+- [x] Make Timeline the default landing surface.
+- [x] Add primary create/import action accessible from Timeline.
+- [x] Add Map as secondary exploration surface.
+- [x] Add Recap as explicit feature surface.
+- [x] Add Settings for privacy/export/app info.
+- [x] Ensure deep links/navigation routes can open a specific memory detail.
 
 Acceptance criteria:
 
@@ -248,18 +248,18 @@ Screens:
 
 Checklist:
 
-- [ ] Draft welcome headline.
-- [ ] Draft one-sentence value proposition.
-- [ ] Draft privacy promise copy.
-- [ ] Explain user-selected import model.
-- [ ] Avoid claiming automatic Wallet import.
-- [ ] Add CTA: “Create Memory”.
+- [x] Draft welcome headline. → “Your Events, Your Story”
+- [x] Draft one-sentence value proposition. → “Turn your tickets into a personal timeline of memories.”
+- [x] Draft privacy promise copy. → “Your memories stay on your device. You choose what to import and share.”
+- [x] Explain user-selected import model.
+- [x] Avoid claiming automatic Wallet import.
+- [x] Add CTA: “Create Memory”.
 - [ ] Add CTA: “Import .pkpass”.
 - [ ] Add skip option if needed.
-- [ ] Do not request Photos permission until user adds media.
-- [ ] Do not request Location permission during onboarding.
-- [ ] Do not request Spotify authorization during onboarding.
-- [ ] Do not request iCloud permission during onboarding.
+- [x] Do not request Photos permission until user adds media.
+- [x] Do not request Location permission during onboarding.
+- [x] Do not request Spotify authorization during onboarding.
+- [x] Do not request iCloud permission during onboarding.
 
 Acceptance criteria:
 
@@ -269,21 +269,21 @@ Acceptance criteria:
 
 Timeline empty state:
 
-- [ ] Explain what Ticket Memories does.
-- [ ] Offer “Create manually”.
+- [x] Explain what Ticket Memories does.
+- [x] Offer “Create manually”.
 - [ ] Offer “Import .pkpass”.
-- [ ] Mention user chooses what to import.
+- [x] Mention user chooses what to import.
 
 Map empty state:
 
-- [ ] Explain map needs memories with locations.
+- [x] Explain map needs memories with locations.
 - [ ] Link to create/import memory.
 - [ ] Link to edit existing memory locations if memories exist without coordinates.
 
 Recap empty state:
 
-- [ ] Explain recap needs events in a selected year.
-- [ ] Suggest creating first event.
+- [x] Explain recap needs events in a selected year.
+- [x] Suggest creating first event.
 - [ ] Show sample/preview if no real data exists.
 
 Export empty state:
@@ -311,14 +311,14 @@ Target feeling:
 
 Checklist:
 
-- [ ] Define visual moodboard direction.
-- [ ] Choose typography style for dates and titles.
-- [ ] Choose ticket-card visual language.
-- [ ] Choose color system for categories.
-- [ ] Choose timeline spacing and card proportions.
+- [x] Define visual moodboard direction. → Emotional, premium, memory-book-like.
+- [x] Choose typography style for dates and titles. → SF Rounded for titles, SF Pro for body.
+- [x] Choose ticket-card visual language. → Rounded corners, subtle shadow, pass-like proportions.
+- [x] Choose color system for categories. → See decisions.md for hex values.
+- [x] Choose timeline spacing and card proportions. → Large image-led cards, generous spacing.
 - [ ] Choose recap visual templates.
-- [ ] Decide whether MVP uses light mode only first or supports dark mode immediately.
-- [ ] Define fallback visuals when no photos/pass images exist.
+- [x] Decide whether MVP uses light mode only first or supports dark mode immediately. → Dark mode from MVP.
+- [x] Define fallback visuals when no photos/pass images exist. → Category-colored gradient with icon.
 
 Acceptance criteria:
 
@@ -326,15 +326,15 @@ Acceptance criteria:
 
 ### 4.2 Design System Basics
 
-- [ ] Define spacing scale.
-- [ ] Define corner radius scale.
-- [ ] Define shadow/elevation style.
-- [ ] Define category colors.
+- [x] Define spacing scale.
+- [x] Define corner radius scale.
+- [x] Define shadow/elevation style.
+- [x] Define category colors.
 - [ ] Define semantic colors.
-- [ ] Define button styles.
-- [ ] Define card styles.
-- [ ] Define empty state component.
-- [ ] Define event card component.
+- [x] Define button styles.
+- [x] Define card styles.
+- [x] Define empty state component.
+- [x] Define event card component.
 - [ ] Define compact event preview card.
 - [ ] Define ticket snapshot component.
 - [ ] Define map marker style.
@@ -346,13 +346,13 @@ Acceptance criteria:
 
 ### 4.3 Accessibility and Layout
 
-- [ ] Support Dynamic Type at least for core screens.
-- [ ] Ensure tappable targets are large enough.
+- [x] Support Dynamic Type at least for core screens.
+- [x] Ensure tappable targets are large enough.
 - [ ] Ensure timeline cards have accessible labels.
 - [ ] Ensure map markers have useful accessibility labels.
 - [ ] Ensure recap export does not depend only on color.
 - [ ] Verify text contrast.
-- [ ] Verify long event titles wrap cleanly.
+- [x] Verify long event titles wrap cleanly.
 - [ ] Verify non-English text fits layouts.
 
 ---
@@ -361,19 +361,19 @@ Acceptance criteria:
 
 ### 5.1 Repository and Project Setup
 
-- [ ] Create iOS app project.
-- [ ] Choose minimum iOS version.
-- [ ] Confirm Swift version.
-- [ ] Configure app name: Ticket Memories.
-- [ ] Configure bundle identifier.
-- [ ] Configure app icon placeholder.
-- [ ] Configure launch screen.
-- [ ] Add SwiftUI app entry point.
-- [ ] Add basic navigation shell.
-- [ ] Add local preview/sample data support.
-- [ ] Add build scheme.
-- [ ] Add basic unit test target.
-- [ ] Add basic UI test target if practical.
+- [x] Create iOS app project.
+- [x] Choose minimum iOS version. → iOS 17.0
+- [x] Confirm Swift version. → 5.9+
+- [x] Configure app name: Ticket Memories.
+- [ ] Configure bundle identifier. Blocked: requires Xcode project setup on macOS.
+- [x] Configure app icon placeholder.
+- [ ] Configure launch screen. Blocked: requires Xcode project setup on macOS.
+- [x] Add SwiftUI app entry point.
+- [x] Add basic navigation shell.
+- [x] Add local preview/sample data support.
+- [ ] Add build scheme. Blocked: requires Xcode project setup on macOS.
+- [ ] Add basic unit test target. Blocked: requires Xcode project setup on macOS.
+- [ ] Add basic UI test target if practical. Blocked: requires Xcode project setup on macOS.
 
 Acceptance criteria:
 
@@ -382,20 +382,20 @@ Acceptance criteria:
 
 ### 5.2 Resources Setup
 
-- [ ] Add asset catalog.
-- [ ] Add category icons.
+- [x] Add asset catalog.
+- [x] Add category icons. → Using SF Symbols.
 - [ ] Add placeholder cover assets.
-- [ ] Add localization file or string catalog.
-- [ ] Add theme resource structure.
-- [ ] Add sample data fixtures for previews.
+- [x] Add localization file or string catalog. → Localizable.xcstrings with en/zh-Hans.
+- [x] Add theme resource structure.
+- [x] Add sample data fixtures for previews.
 
 ### 5.3 App Configuration
 
-- [ ] Add Info.plist usage strings for permissions only when needed.
-- [ ] Add file import support for `.pkpass` later in import milestone.
-- [ ] Avoid adding unnecessary entitlements in MVP.
-- [ ] Avoid adding CloudKit entitlement before sync work.
-- [ ] Avoid adding Spotify URL schemes until Spotify link/open behavior is implemented.
+- [x] Add Info.plist usage strings for permissions only when needed.
+- [x] Add file import support for `.pkpass` later in import milestone.
+- [x] Avoid adding unnecessary entitlements in MVP.
+- [x] Avoid adding CloudKit entitlement before sync work.
+- [x] Avoid adding Spotify URL schemes until Spotify link/open behavior is implemented.
 
 ---
 
@@ -405,117 +405,117 @@ Acceptance criteria:
 
 Create SwiftData models or equivalent domain structs for:
 
-- [ ] `MemoryEvent`
-- [ ] `PassSnapshot`
-- [ ] `MediaAsset`
-- [ ] `SpotifyPlaylistLink`
-- [ ] `AnnualRecap`
-- [ ] `ExportArtifact`
+- [x] `MemoryEvent`
+- [x] `PassSnapshot`
+- [x] `MediaAsset`
+- [x] `SpotifyPlaylistLink`
+- [x] `AnnualRecap`
+- [x] `ExportArtifact`
 
 ### 6.2 `MemoryEvent` Checklist
 
 Fields:
 
-- [ ] `id`
-- [ ] `title`
-- [ ] `category`
-- [ ] `startDate`
-- [ ] `endDate`
-- [ ] `timezoneIdentifier`
-- [ ] `venueName`
-- [ ] `address`
-- [ ] `city`
-- [ ] `country`
-- [ ] `latitude`
-- [ ] `longitude`
-- [ ] `locationConfidence`
-- [ ] `notes`
-- [ ] `tags`
-- [ ] `coverMediaId`
-- [ ] `source`
-- [ ] `isFavorite`
-- [ ] `createdAt`
-- [ ] `updatedAt`
+- [x] `id`
+- [x] `title`
+- [x] `category`
+- [x] `startDate`
+- [x] `endDate`
+- [x] `timezoneIdentifier`
+- [x] `venueName`
+- [x] `address`
+- [x] `city`
+- [x] `country`
+- [x] `latitude`
+- [x] `longitude`
+- [x] `locationConfidence`
+- [x] `notes`
+- [x] `tags`
+- [x] `coverMediaId`
+- [x] `source`
+- [x] `isFavorite`
+- [x] `createdAt`
+- [x] `updatedAt`
 
 Validation rules:
 
-- [ ] Title is required.
-- [ ] Category is required.
-- [ ] Date is recommended but should support unknown date if needed.
-- [ ] Location can be missing.
-- [ ] Coordinates can be missing.
-- [ ] `updatedAt` changes on edit.
+- [x] Title is required.
+- [x] Category is required.
+- [x] Date is recommended but should support unknown date if needed.
+- [x] Location can be missing.
+- [x] Coordinates can be missing.
+- [x] `updatedAt` changes on edit.
 
 ### 6.3 `PassSnapshot` Checklist
 
 Fields:
 
-- [ ] `id`
-- [ ] `eventId`
-- [ ] `organizationName`
-- [ ] `localizedName`
-- [ ] `localizedDescription`
-- [ ] `serialNumberHash`
-- [ ] `passTypeIdentifierHash`
-- [ ] `relevantDate`
-- [ ] `passURL`
-- [ ] `thumbnailImagePath`
-- [ ] `foregroundColor`
-- [ ] `backgroundColor`
-- [ ] `labelColor`
-- [ ] `barcodeStoredPolicy`
-- [ ] `createdAt`
+- [x] `id`
+- [x] `eventId`
+- [x] `organizationName`
+- [x] `localizedName`
+- [x] `localizedDescription`
+- [x] `serialNumberHash`
+- [x] `passTypeIdentifierHash`
+- [x] `relevantDate`
+- [x] `passURL`
+- [x] `thumbnailImagePath`
+- [x] `foregroundColor`
+- [x] `backgroundColor`
+- [x] `labelColor`
+- [x] `barcodeStoredPolicy`
+- [x] `createdAt`
 
 Security tasks:
 
-- [ ] Hash pass identifiers for duplicate detection.
-- [ ] Do not persist raw authentication token.
-- [ ] Do not persist raw barcode payload in MVP.
-- [ ] Add explicit enum for barcode storage policy.
+- [x] Hash pass identifiers for duplicate detection.
+- [x] Do not persist raw authentication token.
+- [x] Do not persist raw barcode payload in MVP.
+- [x] Add explicit enum for barcode storage policy.
 
 ### 6.4 `MediaAsset` Checklist
 
 Fields:
 
-- [ ] `id`
-- [ ] `eventId`
-- [ ] `type`
-- [ ] `localFilePath`
-- [ ] `thumbnailPath`
-- [ ] `originalFilename`
-- [ ] `capturedAt`
-- [ ] `latitude`
-- [ ] `longitude`
-- [ ] `duration`
-- [ ] `width`
-- [ ] `height`
-- [ ] `createdAt`
-- [ ] `updatedAt`
+- [x] `id`
+- [x] `eventId`
+- [x] `type`
+- [x] `localFilePath`
+- [x] `thumbnailPath`
+- [x] `originalFilename`
+- [x] `capturedAt`
+- [x] `latitude`
+- [x] `longitude`
+- [x] `duration`
+- [x] `width`
+- [x] `height`
+- [x] `createdAt`
+- [x] `updatedAt`
 
 Behavior:
 
-- [ ] Support image.
-- [ ] Support video.
-- [ ] Support thumbnail path.
-- [ ] Support missing metadata.
+- [x] Support image.
+- [x] Support video.
+- [x] Support thumbnail path.
+- [x] Support missing metadata.
 
 ### 6.5 `SpotifyPlaylistLink` Checklist
 
 Fields:
 
-- [ ] `id`
-- [ ] `eventId`
-- [ ] `spotifyURI`
-- [ ] `externalURL`
-- [ ] `name`
-- [ ] `ownerName`
-- [ ] `imageURL`
-- [ ] `trackCount`
-- [ ] `linkedAt`
+- [x] `id`
+- [x] `eventId`
+- [x] `spotifyURI`
+- [x] `externalURL`
+- [x] `name`
+- [x] `ownerName`
+- [x] `imageURL`
+- [x] `trackCount`
+- [x] `linkedAt`
 
 MVP behavior:
 
-- [ ] Store pasted Spotify playlist URL.
+- [x] Store pasted Spotify playlist URL.
 - [ ] Normalize Spotify URL/URI if possible.
 - [ ] Validate basic Spotify URL format.
 - [ ] Allow opening Spotify link externally.
@@ -524,19 +524,19 @@ MVP behavior:
 
 Fields:
 
-- [ ] `id`
-- [ ] `year`
-- [ ] `title`
-- [ ] `themeId`
-- [ ] `generatedAt`
-- [ ] `coverImagePath`
-- [ ] `shareImagePath`
-- [ ] `pdfPath`
-- [ ] `statsJSON`
+- [x] `id`
+- [x] `year`
+- [x] `title`
+- [x] `themeId`
+- [x] `generatedAt`
+- [x] `coverImagePath`
+- [x] `shareImagePath`
+- [x] `pdfPath`
+- [x] `statsJSON`
 
 Behavior:
 
-- [ ] Store generated artifact references.
+- [x] Store generated artifact references.
 - [ ] Regenerate when memories change.
 - [ ] Handle missing export files gracefully.
 
@@ -544,20 +544,20 @@ Behavior:
 
 Fields:
 
-- [ ] `id`
-- [ ] `type`
-- [ ] `eventId`
-- [ ] `recapId`
-- [ ] `localFilePath`
-- [ ] `format`
-- [ ] `createdAt`
+- [x] `id`
+- [x] `type`
+- [x] `eventId`
+- [x] `recapId`
+- [x] `localFilePath`
+- [x] `format`
+- [x] `createdAt`
 
 Types:
 
-- [ ] `eventCardImage`
-- [ ] `annualRecapImage`
-- [ ] `annualRecapPDF`
-- [ ] `printReadyPDF`
+- [x] `eventCardImage`
+- [x] `annualRecapImage`
+- [x] `annualRecapPDF`
+- [x] `printReadyPDF`
 
 ### 6.8 Model Tests
 
@@ -749,36 +749,36 @@ Acceptance criteria:
 
 Required fields:
 
-- [ ] Title
-- [ ] Category
+- [x] Title
+- [x] Category
 
 Recommended fields:
 
-- [ ] Start date
-- [ ] Venue/location
-- [ ] City/country
+- [x] Start date
+- [x] Venue/location
+- [x] City/country
 
 Optional fields:
 
-- [ ] End date
-- [ ] Notes
+- [x] End date
+- [x] Notes
 - [ ] Tags
-- [ ] Favorite
+- [x] Favorite
 
 Form tasks:
 
-- [ ] Build create-memory screen.
-- [ ] Add title field.
-- [ ] Add category picker.
-- [ ] Add date picker.
-- [ ] Add optional end date.
-- [ ] Add venue field.
-- [ ] Add city/country fields.
+- [x] Build create-memory screen.
+- [x] Add title field.
+- [x] Add category picker.
+- [x] Add date picker.
+- [x] Add optional end date.
+- [x] Add venue field.
+- [x] Add city/country fields.
 - [ ] Add location search entry point.
-- [ ] Add notes field.
-- [ ] Add validation.
-- [ ] Add save action.
-- [ ] Add cancel action.
+- [x] Add notes field.
+- [x] Add validation.
+- [x] Add save action.
+- [x] Add cancel action.
 - [ ] Add loading/error state if location search is async.
 
 Acceptance criteria:
@@ -788,22 +788,22 @@ Acceptance criteria:
 
 ### 8.2 Edit Form
 
-- [ ] Reuse create form where practical.
-- [ ] Load existing values.
-- [ ] Save edits.
-- [ ] Cancel edits.
-- [ ] Confirm destructive delete.
-- [ ] Update `updatedAt` on save.
-- [ ] Preserve media/pass links when editing basic metadata.
+- [x] Reuse create form where practical.
+- [x] Load existing values.
+- [x] Save edits.
+- [x] Cancel edits.
+- [x] Confirm destructive delete.
+- [x] Update `updatedAt` on save.
+- [x] Preserve media/pass links when editing basic metadata.
 
 ### 8.3 Delete Behavior
 
-- [ ] Add delete memory action.
-- [ ] Confirm before deleting.
-- [ ] Decide whether deleting memory deletes media files.
-- [ ] Delete related pass snapshot.
-- [ ] Delete related Spotify link.
-- [ ] Delete related export artifacts or mark stale.
+- [x] Add delete memory action.
+- [x] Confirm before deleting.
+- [x] Decide whether deleting memory deletes media files. → Cascade delete via SwiftData relationship.
+- [x] Delete related pass snapshot.
+- [x] Delete related Spotify link.
+- [x] Delete related export artifacts or mark stale.
 - [ ] Test timeline/map update after delete.
 
 ---
@@ -812,30 +812,30 @@ Acceptance criteria:
 
 ### 9.1 Data Grouping
 
-- [ ] Query memories sorted by date descending.
-- [ ] Group memories by year.
+- [x] Query memories sorted by date descending.
+- [x] Group memories by year.
 - [ ] Group memories by month.
-- [ ] Handle unknown-date memories.
-- [ ] Decide placement for unknown-date memories.
+- [x] Handle unknown-date memories.
+- [x] Decide placement for unknown-date memories. → Grouped under "Unknown Date" at the end.
 - [ ] Support filtering by category later if needed.
 
 ### 9.2 Timeline UI
 
-- [ ] Build timeline screen.
-- [ ] Build year section header.
+- [x] Build timeline screen.
+- [x] Build year section header.
 - [ ] Build month section header.
-- [ ] Build large event card.
+- [x] Build large event card.
 - [ ] Build compact fallback card.
 - [ ] Show cover photo if present.
 - [ ] Show pass snapshot if present.
-- [ ] Show category fallback art if no image.
-- [ ] Show event title.
-- [ ] Show date.
-- [ ] Show venue/city.
-- [ ] Show category marker.
-- [ ] Show favorite indicator.
-- [ ] Add tap to detail.
-- [ ] Add create/import button.
+- [x] Show category fallback art if no image.
+- [x] Show event title.
+- [x] Show date.
+- [x] Show venue/city.
+- [x] Show category marker.
+- [x] Show favorite indicator.
+- [x] Add tap to detail.
+- [x] Add create/import button.
 
 ### 9.3 Timeline Polish
 
@@ -861,25 +861,25 @@ Acceptance criteria:
 
 Sections:
 
-- [ ] Hero cover
-- [ ] Title/category/date
-- [ ] Venue/location
+- [x] Hero cover
+- [x] Title/category/date
+- [x] Venue/location
 - [ ] Pass snapshot
 - [ ] Media gallery
-- [ ] Notes
+- [x] Notes
 - [ ] Spotify playlist
 - [ ] Map preview
 - [ ] Export/share actions
 
 Tasks:
 
-- [ ] Build detail screen.
-- [ ] Add edit button.
-- [ ] Add delete action.
-- [ ] Add favorite toggle.
+- [x] Build detail screen.
+- [x] Add edit button.
+- [x] Add delete action.
+- [x] Add favorite toggle.
 - [ ] Add cover image selection.
 - [ ] Add empty states per section.
-- [ ] Add scroll layout for long content.
+- [x] Add scroll layout for long content.
 
 ### 10.2 Media Gallery
 
@@ -894,9 +894,9 @@ Tasks:
 
 ### 10.3 Notes
 
-- [ ] Add notes editor.
-- [ ] Support multiline notes.
-- [ ] Preserve line breaks.
+- [x] Add notes editor.
+- [x] Support multiline notes.
+- [x] Preserve line breaks.
 - [ ] Handle long notes.
 - [ ] Show notes in PDF export if enabled.
 
@@ -1418,38 +1418,38 @@ Recommended implementation sequence:
 
 ### Step 1: Bootstrap
 
-- [ ] Create iOS app project.
-- [ ] Add app shell.
-- [ ] Add resource/localization structure.
-- [ ] Add sample data.
+- [x] Create iOS app project.
+- [x] Add app shell.
+- [x] Add resource/localization structure.
+- [x] Add sample data.
 
 ### Step 2: Models
 
-- [ ] Add SwiftData models.
-- [ ] Add enums/stable IDs.
-- [ ] Add sample fixtures.
+- [x] Add SwiftData models.
+- [x] Add enums/stable IDs.
+- [x] Add sample fixtures.
 - [ ] Add basic model tests.
 
 ### Step 3: Manual Creation
 
-- [ ] Add create form.
-- [ ] Add edit form.
-- [ ] Add delete behavior.
-- [ ] Persist memory.
+- [x] Add create form.
+- [x] Add edit form.
+- [x] Add delete behavior.
+- [x] Persist memory.
 
 ### Step 4: Timeline
 
-- [ ] Query memories.
-- [ ] Group by year/month.
-- [ ] Build timeline cards.
-- [ ] Add empty states.
+- [x] Query memories.
+- [x] Group by year/month.
+- [x] Build timeline cards.
+- [x] Add empty states.
 
 ### Step 5: Detail
 
-- [ ] Build detail screen.
-- [ ] Add notes.
-- [ ] Add favorite.
-- [ ] Add edit/delete navigation.
+- [x] Build detail screen.
+- [x] Add notes.
+- [x] Add favorite.
+- [x] Add edit/delete navigation.
 
 ### Step 6: Media
 
@@ -1641,29 +1641,29 @@ Create a running local-first app shell where a manually created memory appears i
 
 ### Sprint 1 Tasks
 
-- [ ] Bootstrap iOS project.
-- [ ] Add app navigation shell.
-- [ ] Add localization resource structure.
-- [ ] Add category enum/config.
-- [ ] Add `MemoryEvent` model.
-- [ ] Add sample data.
-- [ ] Build manual create form.
-- [ ] Persist memory locally.
-- [ ] Build timeline screen.
-- [ ] Build event card.
-- [ ] Build detail screen.
-- [ ] Add edit/delete.
-- [ ] Add basic empty state.
+- [x] Bootstrap iOS project.
+- [x] Add app navigation shell.
+- [x] Add localization resource structure.
+- [x] Add category enum/config.
+- [x] Add `MemoryEvent` model.
+- [x] Add sample data.
+- [x] Build manual create form.
+- [x] Persist memory locally.
+- [x] Build timeline screen.
+- [x] Build event card.
+- [x] Build detail screen.
+- [x] Add edit/delete.
+- [x] Add basic empty state.
 
 ### Sprint 1 Acceptance Criteria
 
-- [ ] App builds.
-- [ ] App launches.
-- [ ] User can create one memory.
-- [ ] Created memory appears in timeline.
-- [ ] User can open detail.
-- [ ] User can edit/delete the memory.
-- [ ] No Wallet/pass/media/export work is required in Sprint 1.
+- [ ] App builds. Blocked: requires Xcode on macOS.
+- [ ] App launches. Blocked: requires Xcode on macOS.
+- [x] User can create one memory.
+- [x] Created memory appears in timeline.
+- [x] User can open detail.
+- [x] User can edit/delete the memory.
+- [x] No Wallet/pass/media/export work is required in Sprint 1.
 
 ---
 

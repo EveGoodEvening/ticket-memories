@@ -1,0 +1,72 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "tab.timeline" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Timeline" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "时间线" } }
+      }
+    },
+    "tab.map" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Map" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "地图" } }
+      }
+    },
+    "tab.recap" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Recap" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "回顾" } }
+      }
+    },
+    "tab.settings" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Settings" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "设置" } }
+      }
+    },
+    "category.concert" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Concert" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "演唱会" } }
+      }
+    },
+    "category.musicFestival" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Music Festival" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "音乐节" } }
+      }
+    },
+    "category.exhibition" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Exhibition" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "展览" } }
+      }
+    },
+    "category.travel" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Travel" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "旅行" } }
+      }
+    },
+    "category.sports" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sports" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "体育赛事" } }
+      }
+    },
+    "category.theater" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Theater" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "剧场" } }
+      }
+    },
+    "category.other" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Other" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "其他" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}
