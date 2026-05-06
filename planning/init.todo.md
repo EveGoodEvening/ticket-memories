@@ -254,8 +254,8 @@ Checklist:
 - [x] Explain user-selected import model.
 - [x] Avoid claiming automatic Wallet import.
 - [x] Add CTA: “Create Memory”.
-- [ ] Add CTA: “Import .pkpass”.
-- [ ] Add skip option if needed.
+- [x] Add CTA: “Import .pkpass”.
+- [x] Add skip option if needed.
 - [x] Do not request Photos permission until user adds media.
 - [x] Do not request Location permission during onboarding.
 - [x] Do not request Spotify authorization during onboarding.
@@ -271,7 +271,7 @@ Timeline empty state:
 
 - [x] Explain what Ticket Memories does.
 - [x] Offer “Create manually”.
-- [ ] Offer “Import .pkpass”.
+- [x] Offer “Import .pkpass”.
 - [x] Mention user chooses what to import.
 
 Map empty state:
@@ -632,19 +632,19 @@ Responsibilities:
 
 Checklist:
 
-- [ ] Define import result type.
-- [ ] Define import error type.
-- [ ] Parse `PKPass` from file data.
-- [ ] Extract localized name.
-- [ ] Extract organization name.
-- [ ] Extract localized description.
-- [ ] Extract relevant date.
-- [ ] Extract display colors where available.
-- [ ] Extract icon/thumbnail if available.
-- [ ] Hash pass identifiers.
-- [ ] Avoid storing raw barcode payload.
-- [ ] Avoid storing authentication token.
-- [ ] Return editable draft rather than saving directly.
+- [x] Define import result type.
+- [x] Define import error type.
+- [x] Parse `PKPass` from file data.
+- [x] Extract localized name.
+- [x] Extract organization name.
+- [x] Extract localized description.
+- [x] Extract relevant date.
+- [x] Extract display colors where available.
+- [x] Extract icon/thumbnail if available.
+- [x] Hash pass identifiers.
+- [x] Avoid storing raw barcode payload.
+- [x] Avoid storing authentication token.
+- [x] Return editable draft rather than saving directly.
 
 Acceptance criteria:
 
@@ -678,19 +678,19 @@ Responsibilities:
 
 Checklist:
 
-- [ ] Query memories by year.
-- [ ] Count events.
-- [ ] Count cities.
-- [ ] Count countries.
-- [ ] Count categories.
-- [ ] Determine favorite city.
-- [ ] Determine favorite venue.
-- [ ] Determine first event.
-- [ ] Determine last event.
+- [x] Query memories by year.
+- [x] Count events.
+- [x] Count cities.
+- [x] Count countries.
+- [x] Count categories.
+- [x] Determine favorite city.
+- [x] Determine favorite venue.
+- [x] Determine first event.
+- [x] Determine last event.
 - [ ] Select highlight photos.
-- [ ] Calculate map bounds.
-- [ ] Handle sparse year with 1 event.
-- [ ] Handle year with no located events.
+- [x] Calculate map bounds.
+- [x] Handle sparse year with 1 event.
+- [x] Handle year with no located events.
 
 Acceptance criteria:
 
@@ -985,56 +985,56 @@ Acceptance criteria:
 
 ### 13.1 File Import UI
 
-- [ ] Add import button from empty timeline.
-- [ ] Add import button from main create/import action.
-- [ ] Configure file picker for `.pkpass` if supported.
-- [ ] Handle file picker cancellation.
+- [x] Add import button from empty timeline.
+- [x] Add import button from main create/import action.
+- [x] Configure file picker for `.pkpass` if supported.
+- [x] Handle file picker cancellation.
 - [ ] Show importing state.
-- [ ] Show import failure state.
+- [x] Show import failure state.
 
 ### 13.2 Pass Parsing
 
-- [ ] Read selected file data.
-- [ ] Create `PKPass` from data where possible.
-- [ ] Extract localized name.
-- [ ] Extract organization name.
-- [ ] Extract localized description.
-- [ ] Extract relevant date.
-- [ ] Extract pass URL if available.
-- [ ] Extract display image/icon if available.
-- [ ] Extract pass display colors if available.
-- [ ] Hash pass type identifier.
-- [ ] Hash serial number.
-- [ ] Avoid raw barcode persistence.
-- [ ] Avoid authentication token persistence.
+- [x] Read selected file data.
+- [x] Create `PKPass` from data where possible.
+- [x] Extract localized name.
+- [x] Extract organization name.
+- [x] Extract localized description.
+- [x] Extract relevant date.
+- [x] Extract pass URL if available.
+- [x] Extract display image/icon if available.
+- [x] Extract pass display colors if available.
+- [x] Hash pass type identifier.
+- [x] Hash serial number.
+- [x] Avoid raw barcode persistence.
+- [x] Avoid authentication token persistence.
 
 ### 13.3 Draft Confirmation
 
-- [ ] Convert import result to editable draft.
-- [ ] Show title field prefilled if available.
-- [ ] Show date prefilled if available.
+- [x] Convert import result to editable draft.
+- [x] Show title field prefilled if available.
+- [x] Show date prefilled if available.
 - [ ] Show location prefilled if available.
-- [ ] Let user choose category.
-- [ ] Let user edit all imported fields.
-- [ ] Save only after confirmation.
-- [ ] Create linked `PassSnapshot`.
+- [x] Let user choose category.
+- [x] Let user edit all imported fields.
+- [x] Save only after confirmation.
+- [x] Create linked `PassSnapshot`.
 
 ### 13.4 Duplicate Handling
 
-- [ ] Compute pass hash.
-- [ ] Detect existing pass snapshot with same hash.
-- [ ] Show duplicate warning.
-- [ ] Let user cancel or create duplicate intentionally.
+- [x] Compute pass hash.
+- [x] Detect existing pass snapshot with same hash.
+- [x] Show duplicate warning.
+- [x] Let user cancel or create duplicate intentionally.
 
 ### 13.5 Import Edge Cases
 
-- [ ] Invalid file.
-- [ ] Valid pass with no date.
-- [ ] Valid pass with no location.
+- [x] Invalid file.
+- [x] Valid pass with no date.
+- [x] Valid pass with no location.
 - [ ] Valid pass with non-English strings.
-- [ ] Expired pass.
+- [x] Expired pass.
 - [ ] Pass with multiple relevant dates.
-- [ ] Pass whose visuals cannot be extracted.
+- [x] Pass whose visuals cannot be extracted.
 
 Acceptance criteria:
 
@@ -1046,26 +1046,26 @@ Acceptance criteria:
 
 ### 14.1 Recap Entry Surface
 
-- [ ] Add Recap tab/screen.
-- [ ] Let user select year.
-- [ ] Show available years from memories.
-- [ ] Show empty state for no memories.
-- [ ] Show preview for selected year.
+- [x] Add Recap tab/screen.
+- [x] Let user select year.
+- [x] Show available years from memories.
+- [x] Show empty state for no memories.
+- [x] Show preview for selected year.
 - [ ] Add regenerate action.
 - [ ] Add export action.
 
 ### 14.2 Recap Stats
 
-- [ ] Total events.
-- [ ] Total cities.
-- [ ] Total countries.
-- [ ] Category distribution.
-- [ ] Favorite city.
-- [ ] Favorite venue.
-- [ ] First event.
-- [ ] Last event.
-- [ ] Map bounds.
-- [ ] Highlight media count.
+- [x] Total events.
+- [x] Total cities.
+- [x] Total countries.
+- [x] Category distribution.
+- [x] Favorite city.
+- [x] Favorite venue.
+- [x] First event.
+- [x] Last event.
+- [x] Map bounds.
+- [x] Highlight media count.
 
 ### 14.3 Recap Templates
 
@@ -1089,11 +1089,11 @@ For each template:
 
 ### 14.4 Recap Content Selection
 
-- [ ] Choose highlight events.
+- [x] Choose highlight events.
 - [ ] Choose highlight photos.
-- [ ] Prefer favorite events if available.
-- [ ] Prefer events with cover images.
-- [ ] Avoid showing too many events in one export.
+- [x] Prefer favorite events if available.
+- [x] Prefer events with cover images.
+- [x] Avoid showing too many events in one export.
 - [ ] Allow manual selection later if needed.
 
 Acceptance criteria:
@@ -1468,11 +1468,11 @@ Recommended implementation sequence:
 
 ### Step 8: `.pkpass` Import
 
-- [ ] Add file picker.
-- [ ] Parse pass.
-- [ ] Create editable draft.
-- [ ] Save memory + pass snapshot.
-- [ ] Handle errors/duplicates.
+- [x] Add file picker.
+- [x] Parse pass.
+- [x] Create editable draft.
+- [x] Save memory + pass snapshot.
+- [x] Handle errors/duplicates.
 
 ### Step 9: Spotify Link
 
@@ -1483,11 +1483,11 @@ Recommended implementation sequence:
 
 ### Step 10: Recap
 
-- [ ] Generate stats.
-- [ ] Build recap view model.
+- [x] Generate stats.
+- [x] Build recap view model.
 - [ ] Build first template.
-- [ ] Add year selection.
-- [ ] Add recap preview.
+- [x] Add year selection.
+- [x] Add recap preview.
 
 ### Step 11: Export Image
 

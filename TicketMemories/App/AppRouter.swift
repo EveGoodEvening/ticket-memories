@@ -1,9 +1,18 @@
 import SwiftUI
 
 struct AppRouter: View {
+    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     @State private var selectedTab: AppTab = .timeline
 
     var body: some View {
+        if hasCompletedOnboarding {
+            mainTabs
+        } else {
+            OnboardingView(hasCompletedOnboarding: $hasCompletedOnboarding)
+        }
+    }
+
+    private var mainTabs: some View {
         TabView(selection: $selectedTab) {
             Tab(AppTab.timeline.title, systemImage: AppTab.timeline.iconName, value: .timeline) {
                 NavigationStack {

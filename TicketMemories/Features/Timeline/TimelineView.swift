@@ -5,6 +5,7 @@ struct TimelineView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \MemoryEvent.startDate, order: .reverse) private var memories: [MemoryEvent]
     @State private var showingCreateSheet = false
+    @State private var showingImportSheet = false
 
     private var groupedByYear: [(year: Int?, memories: [MemoryEvent])] {
         let calendar = Calendar.current
@@ -20,7 +21,10 @@ struct TimelineView: View {
     var body: some View {
         Group {
             if memories.isEmpty {
-                TimelineEmptyView(onCreateTapped: { showingCreateSheet = true })
+                TimelineEmptyView(
+                    onCreateTapped: { showingCreateSheet = true },
+                    onImportTapped: { showingImportSheet = true }
+                )
             } else {
                 timelineContent
             }
@@ -28,8 +32,17 @@ struct TimelineView: View {
         .navigationTitle(String(localized: "timeline.title", defaultValue: "Timeline"))
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                Button {
-                    showingCreateSheet = true
+                Menu {
+                    Button {
+                        showingCreateSheet = true
+                    } label: {
+                        Label(String(localized: "timeline.action.create", defaultValue: "Create Memory"), systemImage: "plus")
+                    }
+                    Button {
+                        showingImportSheet = true
+                    } label: {
+                        Label(String(localized: "timeline.action.import", defaultValue: "Import .pkpass"), systemImage: "doc.badge.plus")
+                    }
                 } label: {
                     Image(systemName: "plus")
                 }
@@ -37,6 +50,9 @@ struct TimelineView: View {
         }
         .sheet(isPresented: $showingCreateSheet) {
             CreateMemoryView()
+        }
+        .sheet(isPresented: $showingImportSheet) {
+            ImportPassView()
         }
     }
 
