@@ -38,7 +38,7 @@ These items are actively broken — the UI promises something that doesn't work.
 
 Checklist:
 
-- [ ] Revert `init.todo.md` line 921 to `[ ]`
+- [x] Revert `init.todo.md` line 921 to `[ ]`
 - [ ] In `MediaGallerySection.swift`, detect video vs. image from `PhotosPickerItem` content type
 - [ ] Add `MediaStorageService.importVideo(data:eventId:)` that saves raw video data (no JPEG conversion)
 - [ ] Set `type: .video` on `MediaAsset` for video imports
@@ -54,7 +54,7 @@ Checklist:
 
 Checklist:
 
-- [ ] Revert `init.todo.md` line 887 to `[ ]`
+- [x] Revert `init.todo.md` line 887 to `[ ]`
 - [ ] Add `generateVideoThumbnail(from url: URL) -> UIImage?` to `MediaStorageService`
 - [ ] Use `AVAssetImageGenerator` to extract first frame or frame at 1s
 - [ ] Call this during video import to populate `thumbnailPath`
@@ -74,7 +74,7 @@ These items have toggle UI that controls nothing. Users see options that are lie
 
 Checklist:
 
-- [ ] Revert `init.todo.md` line 1168 to `[ ]`
+- [x] Revert `init.todo.md` line 1168 to `[ ]`
 - [ ] In `PDFExportService.renderEventPage`, check `options.includePhotos`
 - [ ] Read event's `MediaAsset` images from disk, render a photo grid below notes section
 - [ ] Handle missing image files gracefully (skip, don't crash)
@@ -88,7 +88,7 @@ Checklist:
 
 Checklist:
 
-- [ ] Revert `init.todo.md` line 1170 to `[ ]`
+- [x] Revert `init.todo.md` line 1170 to `[ ]`
 - [ ] In `PDFExportService`, add a `renderMapPage` method
 - [ ] Use `MKMapSnapshotter` to render a static map image with event pins
 - [ ] Gate the map page on `options.includeMap` and at least one event having coordinates
@@ -104,8 +104,8 @@ Checklist:
 
 Checklist:
 
-- [ ] Revert `init.todo.md` line 1171 to `[ ]`
-- [ ] Revert `init.todo.md` line 1258 to `[ ]`
+- [x] Revert `init.todo.md` line 1171 to `[ ]`
+- [x] Revert `init.todo.md` line 1258 to `[ ]`
 - [ ] In `PDFExportService.renderEventPage`, check `options.includeSpotifyLink`
 - [ ] When event has a `SpotifyPlaylistLink`, render the URL text on the event page
 - [ ] Optionally generate a QR code via `CIFilter("CIQRCodeGenerator")` for the Spotify URL
@@ -121,7 +121,7 @@ Checklist:
 
 Checklist:
 
-- [ ] Revert `init.todo.md` line 1164 to `[ ]`
+- [x] Revert `init.todo.md` line 1164 to `[ ]`
 - [ ] Add a read-only year label to `printOptionsSheet` so user sees which year they're exporting
 - [ ] No year picker needed — year is inherited from RecapView context
 
@@ -137,7 +137,7 @@ Checklist:
 
 Checklist:
 
-- [ ] Revert `init.todo.md` line 1229 to `[ ]`
+- [x] Revert `init.todo.md` line 1229 to `[ ]`
 - [ ] Add a short disclaimer text to `ImportPassView.swift` below the description, e.g.: "Only event metadata (title, date, colors) is extracted. Barcodes, authentication tokens, and raw ticket credentials are never stored."
 - [ ] Use localized string key for the disclaimer
 - [ ] Mark `[x]` after implemented
@@ -150,7 +150,7 @@ Checklist:
 
 Checklist:
 
-- [ ] Revert `init.todo.md` line 1035 to `[ ]`
+- [x] Revert `init.todo.md` line 1035 to `[ ]`
 - [ ] In `PassImportService.importPass`, check `pass.expirationDate`
 - [ ] If expired: still allow import (it's a memory), but set a flag on `PassImportResult` like `isExpired: Bool`
 - [ ] In `ImportPassView`, show an informational note: "This pass has expired, but you can still save it as a memory."
@@ -164,7 +164,7 @@ Checklist:
 
 Checklist:
 
-- [ ] Revert `init.todo.md` line 1037 to `[ ]`
+- [x] Revert `init.todo.md` line 1037 to `[ ]`
 - [ ] In `PassImportService.importPass`, after `result.thumbnailData = pass.icon`:
   - If nil, generate a fallback thumbnail using the pass's background color + organization name text
   - Or simply log and continue (current behavior) but add a note in the confirmation UI: "No pass image was found"
@@ -183,7 +183,7 @@ Checklist:
 
 Files to fix:
 
-- [ ] Revert `init.todo.md` line 349 to `[ ]`
+- [x] Revert `init.todo.md` line 349 to `[ ]`
 - [ ] `TimelineEventCard.swift` — replace `.system(size: 48)` with `.largeTitle` or `.system(.largeTitle)`
 - [ ] `MemoryDetailView.swift` — replace `.system(size: 64)` with scalable text style
 - [ ] `ImportPassView.swift` — replace `.system(size: 77)` with scalable text style
@@ -200,7 +200,7 @@ Files to fix:
 
 Checklist:
 
-- [ ] Revert `init.todo.md` line 350 to `[ ]`
+- [x] Revert `init.todo.md` line 350 to `[ ]`
 - [ ] Add to QA checklist: audit tappable target sizes on physical device during TestFlight prep
 - [ ] Mark `[x]` only after physical device audit
 
@@ -212,7 +212,7 @@ Checklist:
 
 Checklist:
 
-- [ ] Revert `init.todo.md` line 334 to `[ ]`
+- [x] Revert `init.todo.md` line 334 to `[ ]`
 - [ ] Evaluate during polish phase whether custom button styles are needed for visual consistency
 - [ ] If needed: add `PrimaryButtonStyle`, `SecondaryButtonStyle` to `DesignSystem.swift`
 
@@ -228,7 +228,7 @@ Checklist:
 
 Checklist:
 
-- [ ] Revert `init.todo.md` line 975 to `[ ]`
+- [x] Revert `init.todo.md` line 975 to `[ ]`
 - [ ] In `CreateMemoryView` / `EditMemoryView`: when user types venue/city text, set `.manual`
 - [ ] In `PassImportService`: when location is extracted from pass, set `.inferred`
 - [ ] If geocoding is added later: set `.exact` for geocoded coordinates
@@ -247,8 +247,8 @@ Checklist:
 
 Checklist:
 
-- [ ] Revert `init.todo.md` line 1464 to `[x] Add location fields` (remove "/search" or revert to `[ ]`)
-- [ ] Revert `init.todo.md` line 1525 to `[x] Location entry` (remove "/search" or revert to `[ ]`)
+- [x] Revert `init.todo.md` line 1464 to `[ ]` (removed — search not implemented)
+- [x] Revert `init.todo.md` line 1525 to `[ ]` (removed — search not implemented)
 - [ ] Lines 972-973 can stay `[x]` — text-based location adding/changing IS implemented
 - [ ] Add new task under Section 7.2 GeocodingService: `[ ] Implement MKLocalSearch venue lookup`
 - [ ] Add new task under Section 12.3: `[ ] Add coordinate picker or geocoding to create/edit form`
@@ -268,8 +268,8 @@ These items should be unmarked but don't need implementation before TestFlight.
 
 Checklist:
 
-- [ ] Revert `init.todo.md` line 234 to `[ ]`
-- [ ] Move to post-MVP backlog or keep as `[ ]` in current section
+- [x] Revert `init.todo.md` line 234 to `[ ]`
+- [x] Move to post-MVP backlog or keep as `[ ]` in current section
 
 ### 6.2 Theme resource structure
 
@@ -279,8 +279,8 @@ Checklist:
 
 Checklist:
 
-- [ ] Revert `init.todo.md` line 389 to `[ ]`
-- [ ] Implement when recap templates (Section 14.3) are built
+- [x] Revert `init.todo.md` line 389 to `[ ]`
+- [x] Implement when recap templates (Section 14.3) are built (deferred to post-MVP)
 
 ### 6.3 Generated artifact references
 
@@ -290,8 +290,8 @@ Checklist:
 
 Checklist:
 
-- [ ] Revert `init.todo.md` line 539 to `[ ]`
-- [ ] When implementing "Exported files management" (Settings, line 1269), wire up `ExportArtifact` creation in `ExportRenderer` and `PDFExportService`
+- [x] Revert `init.todo.md` line 539 to `[ ]`
+- [x] When implementing "Exported files management" (Settings, line 1269), wire up `ExportArtifact` creation in `ExportRenderer` and `PDFExportService` (deferred to post-MVP)
 
 ### 6.4 Info.plist usage strings
 
@@ -301,8 +301,8 @@ Checklist:
 
 Checklist:
 
-- [ ] Revert `init.todo.md` line 394 to `[ ] Blocked: requires Xcode project setup on macOS`
-- [ ] When Xcode project is created: add `NSPhotoLibraryUsageDescription` and any other needed keys
+- [x] Revert `init.todo.md` line 394 to `[ ] Blocked: requires Xcode project setup on macOS`
+- [x] When Xcode project is created: add `NSPhotoLibraryUsageDescription` and any other needed keys (blocked: needs macOS)
 
 ### 6.5 Avoid hard-coding paywall decisions
 
@@ -312,8 +312,8 @@ Checklist:
 
 Checklist:
 
-- [ ] Revert `init.todo.md` line 1302 to `[ ]`
-- [ ] When implementing monetization (Section 19): add feature entitlement layer and verify no hard-coded gating
+- [x] Revert `init.todo.md` line 1302 to `[ ]`
+- [x] When implementing monetization (Section 19): add feature entitlement layer and verify no hard-coded gating (deferred to post-MVP)
 
 ---
 
@@ -327,7 +327,7 @@ Checklist:
 
 Checklist:
 
-- [ ] Change `init.todo.md` line 1547 from `[ ]` to `[x]`
+- [x] Change `init.todo.md` line 1547 from `[ ]` to `[x]`
 
 ---
 

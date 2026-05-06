@@ -231,7 +231,7 @@ Checklist:
 - [x] Add Map as secondary exploration surface.
 - [x] Add Recap as explicit feature surface.
 - [x] Add Settings for privacy/export/app info.
-- [x] Ensure deep links/navigation routes can open a specific memory detail.
+- [ ] Ensure deep links/navigation routes can open a specific memory detail.
 
 Acceptance criteria:
 
@@ -331,7 +331,7 @@ Acceptance criteria:
 - [x] Define shadow/elevation style.
 - [x] Define category colors.
 - [ ] Define semantic colors.
-- [x] Define button styles.
+- [ ] Define button styles.
 - [x] Define card styles.
 - [x] Define empty state component.
 - [x] Define event card component.
@@ -346,8 +346,8 @@ Acceptance criteria:
 
 ### 4.3 Accessibility and Layout
 
-- [x] Support Dynamic Type at least for core screens.
-- [x] Ensure tappable targets are large enough.
+- [ ] Support Dynamic Type at least for core screens.
+- [ ] Ensure tappable targets are large enough.
 - [x] Ensure timeline cards have accessible labels.
 - [ ] Ensure map markers have useful accessibility labels.
 - [ ] Ensure recap export does not depend only on color.
@@ -386,12 +386,12 @@ Acceptance criteria:
 - [x] Add category icons. → Using SF Symbols.
 - [ ] Add placeholder cover assets.
 - [x] Add localization file or string catalog. → Localizable.xcstrings with en/zh-Hans.
-- [x] Add theme resource structure.
+- [ ] Add theme resource structure.
 - [x] Add sample data fixtures for previews.
 
 ### 5.3 App Configuration
 
-- [x] Add Info.plist usage strings for permissions only when needed.
+- [ ] Add Info.plist usage strings for permissions only when needed. (Blocked: requires Xcode project setup on macOS)
 - [x] Add file import support for `.pkpass` later in import milestone.
 - [x] Avoid adding unnecessary entitlements in MVP.
 - [x] Avoid adding CloudKit entitlement before sync work.
@@ -536,7 +536,7 @@ Fields:
 
 Behavior:
 
-- [x] Store generated artifact references.
+- [ ] Store generated artifact references.
 - [ ] Regenerate when memories change.
 - [ ] Handle missing export files gracefully.
 
@@ -884,7 +884,7 @@ Tasks:
 ### 10.2 Media Gallery
 
 - [x] Show image thumbnails.
-- [x] Show video thumbnails.
+- [ ] Show video thumbnails.
 - [ ] Tap media to preview.
 - [x] Add media button.
 - [x] Remove media action.
@@ -918,7 +918,7 @@ Tasks:
 
 - [x] Add photo picker entry point from detail page.
 - [x] Allow multiple image selection.
-- [x] Allow video selection if practical.
+- [ ] Allow video selection if practical.
 - [x] Copy selected media into app storage.
 - [x] Generate thumbnails.
 - [x] Create `MediaAsset` records.
@@ -972,7 +972,7 @@ Tasks:
 - [x] Allow adding location from create/edit form.
 - [x] Allow changing location.
 - [ ] Allow removing exact coordinates.
-- [x] Store location confidence.
+- [ ] Store location confidence.
 - [x] Let text-only location remain without coordinate.
 
 Acceptance criteria:
@@ -1032,9 +1032,9 @@ Acceptance criteria:
 - [x] Valid pass with no date.
 - [x] Valid pass with no location.
 - [ ] Valid pass with non-English strings.
-- [x] Expired pass.
+- [ ] Expired pass.
 - [ ] Pass with multiple relevant dates.
-- [x] Pass whose visuals cannot be extracted.
+- [ ] Pass whose visuals cannot be extracted.
 
 Acceptance criteria:
 
@@ -1161,14 +1161,14 @@ MVP print-ready PDF only. No order checkout.
 
 ### 16.2 PDF Options UI
 
-- [x] Select year.
+- [ ] Select year.
 - [ ] Select events.
 - [ ] Select template.
 - [x] Select page size: A4 / Letter.
-- [x] Include/exclude photos.
+- [ ] Include/exclude photos.
 - [x] Include/exclude notes.
-- [x] Include/exclude map.
-- [x] Include/exclude Spotify link/QR placeholder.
+- [ ] Include/exclude map.
+- [ ] Include/exclude Spotify link/QR placeholder.
 - [ ] Preview before export if practical.
 
 ### 16.3 Yearbook Template
@@ -1226,7 +1226,7 @@ Acceptance criteria:
 ### 17.1 Copy and Expectations
 
 - [x] Write privacy copy for onboarding.
-- [x] Write import disclaimer.
+- [ ] Write import disclaimer.
 - [ ] Write export disclaimer if exact location appears.
 - [x] Write Settings privacy explanation.
 - [x] Avoid “backup Wallet” language.
@@ -1255,7 +1255,7 @@ Acceptance criteria:
 - [ ] Preview export before sharing if feasible.
 - [ ] Let user remove exact location from export if map/location included.
 - [x] Let user exclude notes from PDF.
-- [x] Let user exclude Spotify link.
+- [ ] Let user exclude Spotify link.
 - [x] Clearly show exports are local files shared by user action.
 
 ---
@@ -1299,7 +1299,7 @@ Tasks:
 
 - [ ] Decide which features are free in TestFlight.
 - [ ] Decide which features are future Pro.
-- [x] Avoid hard-coding paywall decisions into core components.
+- [ ] Avoid hard-coding paywall decisions into core components.
 - [ ] Design feature entitlement layer later.
 
 ### 19.2 StoreKit Later
@@ -1461,7 +1461,7 @@ Recommended implementation sequence:
 
 ### Step 7: Map
 
-- [x] Add location fields/search.
+- [ ] Add location fields/search.
 - [x] Render map pins.
 - [x] Add filters.
 - [x] Add marker preview.
@@ -1522,7 +1522,7 @@ Recommended implementation sequence:
 ### Must happen before Map is useful
 
 - [x] Memory events with coordinates
-- [x] Location entry/search
+- [ ] Location entry/search
 - [x] Map annotation model
 
 ### Must happen before Recap is useful
@@ -1544,7 +1544,7 @@ Recommended implementation sequence:
 - [x] Import errors are handled
 - [x] Privacy copy is clear
 - [ ] Local data persists
-- [ ] Export files open outside app
+- [x] Export files open outside app
 
 ---
 
