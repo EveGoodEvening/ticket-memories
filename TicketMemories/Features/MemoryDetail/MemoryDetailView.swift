@@ -8,6 +8,7 @@ struct MemoryDetailView: View {
     @Bindable var event: MemoryEvent
     @State private var showingEditSheet = false
     @State private var showingDeleteConfirmation = false
+    @ScaledMetric(relativeTo: .largeTitle) private var heroIconSize: CGFloat = 64
 
     var body: some View {
         ScrollView {
@@ -78,7 +79,7 @@ struct MemoryDetailView: View {
                 .frame(height: 240)
                 .overlay {
                     Image(systemName: event.category.iconName)
-                        .font(.system(size: 64))
+                        .font(.system(size: heroIconSize))
                         .foregroundStyle(.white.opacity(0.3))
                 }
 

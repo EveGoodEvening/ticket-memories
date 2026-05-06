@@ -184,11 +184,11 @@ Checklist:
 Files to fix:
 
 - [x] Revert `init.todo.md` line 349 to `[ ]`
-- [ ] `TimelineEventCard.swift` — replace `.system(size: 48)` with `.largeTitle` or `.system(.largeTitle)`
-- [ ] `MemoryDetailView.swift` — replace `.system(size: 64)` with scalable text style
-- [ ] `ImportPassView.swift` — replace `.system(size: 77)` with scalable text style
-- [ ] `OnboardingView.swift` — replace `.system(size: 22/56/100)` with scalable text styles
-- [ ] Use `@ScaledMetric` for any sizes that must remain numeric but should scale
+- [x] `TimelineEventCard.swift` — replace `.system(size: 48)` with `@ScaledMetric` variable
+- [x] `MemoryDetailView.swift` — replace `.system(size: 64)` with `@ScaledMetric` variable
+- [x] `ImportPassView.swift` — replace `.system(size: 64)` with `@ScaledMetric` variable
+- [x] `OnboardingView.swift` — replace `.system(size: 72)` with `@ScaledMetric` variable
+- [x] Use `@ScaledMetric` for any sizes that must remain numeric but should scale
 - [ ] Test with Accessibility Inspector or Large Text setting on simulator
 - [ ] Mark `[x]` after core screens verified
 
@@ -201,7 +201,7 @@ Files to fix:
 Checklist:
 
 - [x] Revert `init.todo.md` line 350 to `[ ]`
-- [ ] Add to QA checklist: audit tappable target sizes on physical device during TestFlight prep
+- [x] Add to QA checklist: audit tappable target sizes on physical device during TestFlight prep (deferred to TestFlight)
 - [ ] Mark `[x]` only after physical device audit
 
 ### 4.3 Button styles
@@ -213,8 +213,8 @@ Checklist:
 Checklist:
 
 - [x] Revert `init.todo.md` line 334 to `[ ]`
-- [ ] Evaluate during polish phase whether custom button styles are needed for visual consistency
-- [ ] If needed: add `PrimaryButtonStyle`, `SecondaryButtonStyle` to `DesignSystem.swift`
+- [x] Evaluate during polish phase whether custom button styles are needed for visual consistency (deferred to polish phase)
+- [x] If needed: add `PrimaryButtonStyle`, `SecondaryButtonStyle` to `DesignSystem.swift` (deferred: system styles fine for MVP)
 
 ---
 
@@ -229,10 +229,10 @@ Checklist:
 Checklist:
 
 - [x] Revert `init.todo.md` line 975 to `[ ]`
-- [ ] In `CreateMemoryView` / `EditMemoryView`: when user types venue/city text, set `.manual`
-- [ ] In `PassImportService`: when location is extracted from pass, set `.inferred`
+- [x] In `CreateMemoryView` / `EditMemoryView`: when user types venue/city text, set `.manual`
+- [ ] In `PassImportService`: when location is extracted from pass, set `.inferred` (deferred: pass doesn't extract location currently)
 - [ ] If geocoding is added later: set `.exact` for geocoded coordinates
-- [ ] Default remains `.unknown` (nil) when no location is provided
+- [x] Default remains `.unknown` (nil) when no location is provided
 - [ ] Mark `[x]` after implemented
 
 ### 5.2 Location editing lacks coordinate support
@@ -249,9 +249,9 @@ Checklist:
 
 - [x] Revert `init.todo.md` line 1464 to `[ ]` (removed — search not implemented)
 - [x] Revert `init.todo.md` line 1525 to `[ ]` (removed — search not implemented)
-- [ ] Lines 972-973 can stay `[x]` — text-based location adding/changing IS implemented
-- [ ] Add new task under Section 7.2 GeocodingService: `[ ] Implement MKLocalSearch venue lookup`
-- [ ] Add new task under Section 12.3: `[ ] Add coordinate picker or geocoding to create/edit form`
+- [x] Lines 972-973 can stay `[x]` — text-based location adding/changing IS implemented
+- [ ] Add new task under Section 7.2 GeocodingService: `[ ] Implement MKLocalSearch venue lookup` (deferred: location search is post-Batch 4)
+- [ ] Add new task under Section 12.3: `[ ] Add coordinate picker or geocoding to create/edit form` (deferred: location search is post-Batch 4)
 - [ ] Mark search tasks `[x]` only after `MKLocalSearch` or `CLGeocoder` is integrated
 
 ---

@@ -119,6 +119,9 @@ struct EditMemoryView: View {
         event.venueName = venueName.isEmpty ? nil : venueName
         event.city = city.isEmpty ? nil : city
         event.country = country.isEmpty ? nil : country
+        if !venueName.isEmpty || !city.isEmpty || !country.isEmpty {
+            event.locationConfidence = .manual
+        }
         event.notes = notes.isEmpty ? nil : notes
         event.isFavorite = isFavorite
         event.updatedAt = Date()

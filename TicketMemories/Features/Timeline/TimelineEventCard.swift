@@ -2,6 +2,7 @@ import SwiftUI
 
 struct TimelineEventCard: View {
     let event: MemoryEvent
+    @ScaledMetric(relativeTo: .largeTitle) private var iconSize: CGFloat = 48
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -20,7 +21,7 @@ struct TimelineEventCard: View {
                 .frame(height: 180)
                 .overlay {
                     Image(systemName: event.category.iconName)
-                        .font(.system(size: 48))
+                        .font(.system(size: iconSize))
                         .foregroundStyle(.white.opacity(0.4))
                 }
 

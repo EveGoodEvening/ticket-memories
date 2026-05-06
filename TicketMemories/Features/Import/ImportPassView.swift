@@ -19,6 +19,8 @@ struct ImportPassView: View {
 
     @State private var isDuplicateWarning = false
 
+    @ScaledMetric(relativeTo: .largeTitle) private var promptIconSize: CGFloat = 64
+
     private var isValid: Bool {
         !title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
@@ -74,7 +76,7 @@ struct ImportPassView: View {
             Spacer()
 
             Image(systemName: "ticket")
-                .font(.system(size: 64))
+                .font(.system(size: promptIconSize))
                 .foregroundStyle(.secondary)
 
             Text(String(localized: "import.prompt.title", defaultValue: "Import a .pkpass File"))

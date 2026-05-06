@@ -3,6 +3,7 @@ import SwiftUI
 struct OnboardingView: View {
     @Binding var hasCompletedOnboarding: Bool
     @State private var currentPage = 0
+    @ScaledMetric(relativeTo: .largeTitle) private var pageIconSize: CGFloat = 72
 
     var body: some View {
         TabView(selection: $currentPage) {
@@ -19,7 +20,7 @@ struct OnboardingView: View {
             Spacer()
 
             Image(systemName: "ticket.fill")
-                .font(.system(size: 72))
+                .font(.system(size: pageIconSize))
                 .foregroundStyle(.accent)
 
             Text(String(localized: "onboarding.welcome.title", defaultValue: "Your Events, Your Story"))
@@ -53,7 +54,7 @@ struct OnboardingView: View {
             Spacer()
 
             Image(systemName: "lock.shield.fill")
-                .font(.system(size: 72))
+                .font(.system(size: pageIconSize))
                 .foregroundStyle(.green)
 
             Text(String(localized: "onboarding.privacy.title", defaultValue: "Your Privacy Matters"))
@@ -97,7 +98,7 @@ struct OnboardingView: View {
             Spacer()
 
             Image(systemName: "sparkles")
-                .font(.system(size: 72))
+                .font(.system(size: pageIconSize))
                 .foregroundStyle(.accent)
 
             Text(String(localized: "onboarding.start.title", defaultValue: "Get Started"))

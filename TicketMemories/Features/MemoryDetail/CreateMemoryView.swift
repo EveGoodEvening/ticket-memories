@@ -123,6 +123,7 @@ struct CreateMemoryView: View {
             venueName: venueName.isEmpty ? nil : venueName,
             city: city.isEmpty ? nil : city,
             country: country.isEmpty ? nil : country,
+            locationConfidence: (!venueName.isEmpty || !city.isEmpty || !country.isEmpty) ? .manual : nil,
             notes: notes.isEmpty ? nil : notes,
             source: .manual,
             isFavorite: isFavorite
